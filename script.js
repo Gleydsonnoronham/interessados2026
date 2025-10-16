@@ -2,7 +2,9 @@
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-// Controle de navegação mobile com backdrop e acessibilidade
+/* =========================================
+   Navegação mobile com backdrop e acessibilidade
+========================================= */
 (function navToggle() {
   const btn = $('.nav-toggle');
   const menu = $('#menu-principal');
@@ -13,7 +15,6 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
     btn.setAttribute('aria-expanded', 'true');
     backdrop.hidden = false;
     backdrop.classList.add('show');
-    // Trava scroll do body
     document.documentElement.style.overflow = 'hidden';
   };
 
@@ -21,32 +22,31 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
     menu.classList.remove('open');
     btn.setAttribute('aria-expanded', 'false');
     backdrop.classList.remove('show');
-    // Aguarda transição de opacidade para ocultar
     setTimeout(() => { backdrop.hidden = true; }, 200);
     document.documentElement.style.overflow = '';
   };
 
   btn.addEventListener('click', () => {
-    const isOpen = menu.classList.contains('open');
-    isOpen ? closeMenu() : openMenu();
+    menu.classList.contains('open') ? closeMenu() : openMenu();
   });
 
   backdrop.addEventListener('click', closeMenu);
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 
-  // Fechar ao clicar em link
-  $$('#menu-principal a').forEach(a => {
-    a.addEventListener('click', closeMenu);
-  });
+  $$('#menu-principal a').forEach(a => a.addEventListener('click', closeMenu));
 })();
 
-// Ano no rodapé
+/* =========================================
+   Ano no rodapé
+========================================= */
 (function yearFooter() {
   const el = $('#ano-atual');
   if (el) el.textContent = String(new Date().getFullYear());
 })();
 
-// Captura de UTM e preenchimento de campos ocultos
+/* =========================================
+   Captura de UTM (utm_source, utm_medium, utm_campaign, utm_content)
+========================================= */
 (function utmCapture() {
   const params = new URLSearchParams(window.location.search);
   const setVal = (id, key) => {
@@ -58,7 +58,9 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   setVal('utm_content', 'utm_content');
 })();
 
-// Máscara simples de telefone (não intrusiva)
+/* =========================================
+   Máscara simples de telefone (não intrusiva)
+========================================= */
 (function phoneMask() {
   const tel = $('#telefone');
   if (!tel) return;
@@ -74,7 +76,9 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   });
 })();
 
-// Validação de formulário e submissão (sem back-end, armazena localmente)
+/* =========================================
+   Validação de formulário e submissão (localStorage)
+========================================= */
 (function formHandler() {
   const form = $('#lead-form');
   if (!form) return;
@@ -93,14 +97,12 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Limpa mensagens
     ['erro-nome','erro-email','erro-lgpd'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.textContent = '';
     });
     [nome, email, lgpd].forEach(el => el && el.setAttribute('aria-invalid', 'false'));
 
-    // Honeypot: se preenchido, descarta o envio
     if (hp && hp.value.trim() !== '') return;
 
     let ok = true;
@@ -127,14 +129,11 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
     if (!ok) return;
 
-    // Coleta interesses
     const interesses = Array.from(document.querySelectorAll('input[name="interesses"]:checked')).map(i => i.value);
 
-    // Coleta UTMs
     const utm = {
     };
 
-    // Payload para integração futura
     const payload = {
       nome: nome.value.trim(),
       email: email.value.trim(),
@@ -148,26 +147,64 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
       timestamp: new Date().toISOString()
     };
 
-    // Persistência local (substituir por integração real quando necessário)
     try {
       leads.push(payload);
       localStorage.setItem('leads_ifto_admin', JSON.stringify(leads));
     } catch (err) {
-      // Em ambientes com restrição a localStorage, ignore silenciosamente
+      // Ignorar em ambientes que bloqueiam localStorage
     }
 
-    // Feedback ao usuário
     if (feedback) {
       feedback.hidden = false;
       feedback.textContent = 'Cadastro recebido com sucesso. Você receberá nosso e-mail de boas-vindas em breve.';
     }
 
-    // Reset amigável (mantém UTMs)
+    // Mensuração do submit (genérico)
+    trackEvent('form_submit', { form: 'lead_form' });
+
     form.reset();
   });
 })();
 
-// Acessibilidade: foco ao navegar por âncora do "Pular para o conteúdo"
+/* =========================================
+   Mensuração básica (sem serviços externos)
+   - Você pode substituir por GA/Tag Manager no futuro.
+========================================= */
+function trackEvent(action, params = {}) {
+  // 1) Registro no console (visualização rápida)
+  // 2) Persistência simples no localStorage (histórico local)
+  try {
+    console.log('[trackEvent]', action, params);
+    logs.push({ action, params, ts: Date.now() });
+    localStorage.setItem('metrics_logs', JSON.stringify(logs));
+  } catch(_) {}
+}
+
+// Clique em CTAs (Hero, Menu, Form)
+(function trackCTAs() {
+  $$('[data-track]').forEach(el => {
+    el.addEventListener('click', () => {
+    });
+  });
+})();
+
+// Abertura de FAQ (útil para saber o que gera mais dúvidas)
+(function trackFAQ() {
+  $$('#faq .faq-item > summary').forEach(s => {
+    s.addEventListener('click', () => {
+      const question = s.textContent.trim();
+      const isOpen = s.parentElement?.open === true; // estado pós-clique no next tick
+      // Pequeno delay para capturar o estado correto
+      setTimeout(() => {
+        trackEvent('faq_toggle', { question, open: s.parentElement?.open === true });
+      }, 0);
+    });
+  });
+})();
+
+/* =========================================
+   Acessibilidade: foco ao "Pular para o conteúdo"
+========================================= */
 (function focusMainOnSkip() {
   const main = document.getElementById('conteudo-principal');
   if (!main) return;
