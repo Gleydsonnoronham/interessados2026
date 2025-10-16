@@ -2,22 +2,41 @@
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-// Controle de navegação mobile
+// Controle de navegação mobile com backdrop e acessibilidade
 (function navToggle() {
   const btn = $('.nav-toggle');
   const menu = $('#menu-principal');
+  const backdrop = $('#backdrop');
+
+  const openMenu = () => {
+    menu.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    backdrop.hidden = false;
+    backdrop.classList.add('show');
+    // Trava scroll do body
+    document.documentElement.style.overflow = 'hidden';
+  };
+
+  const closeMenu = () => {
+    menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    backdrop.classList.remove('show');
+    // Aguarda transição de opacidade para ocultar
+    setTimeout(() => { backdrop.hidden = true; }, 200);
+    document.documentElement.style.overflow = '';
+  };
 
   btn.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', String(open));
+    const isOpen = menu.classList.contains('open');
+    isOpen ? closeMenu() : openMenu();
   });
+
+  backdrop.addEventListener('click', closeMenu);
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 
   // Fechar ao clicar em link
   $$('#menu-principal a').forEach(a => {
-    a.addEventListener('click', () => {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-    });
+    a.addEventListener('click', closeMenu);
   });
 })();
 
@@ -60,19 +79,19 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   const form = $('#lead-form');
   if (!form) return;
 
+  const feedback = $('#form-feedback');
+  const hp = $('#website');
+  const nome = $('#nome');
+  const email = $('#email');
+  const telefone = $('#telefone');
+  const cidade = $('#cidade');
+  const conclusao = $('#conclusao');
+  const lgpd = $('#lgpd');
+
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email);
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const feedback = $('#form-feedback');
-    const hp = $('#website');
-    const nome = $('#nome');
-    const email = $('#email');
-    const telefone = $('#telefone');
-    const cidade = $('#cidade');
-    const conclusao = $('#conclusao');
-    const lgpd = $('#lgpd');
 
     // Limpa mensagens
     ['erro-nome','erro-email','erro-lgpd'].forEach(id => {
@@ -82,9 +101,7 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
     [nome, email, lgpd].forEach(el => el && el.setAttribute('aria-invalid', 'false'));
 
     // Honeypot: se preenchido, descarta o envio
-    if (hp && hp.value.trim() !== '') {
-      return; // Bot automatizado
-    }
+    if (hp && hp.value.trim() !== '') return;
 
     let ok = true;
 
@@ -111,13 +128,13 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
     if (!ok) return;
 
     // Coleta interesses
-    const interesses = $$('input[name="interesses"]:checked').map(i => i.value);
+    const interesses = Array.from(document.querySelectorAll('input[name="interesses"]:checked')).map(i => i.value);
 
     // Coleta UTMs
     const utm = {
     };
 
-    // Payload para integração futura (sem dados fictícios)
+    // Payload para integração futura
     const payload = {
       nome: nome.value.trim(),
       email: email.value.trim(),
