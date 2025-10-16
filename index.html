@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
 
   <!-- CSS principal (com versão para evitar cache) -->
-  <link rel="stylesheet" href="styles.css?v=1.0.2" />
+  <link rel="stylesheet" href="styles.css?v=1.1.0" />
 
   <noscript>
     <style>.js-only { display: none !important; }</style>
@@ -32,33 +32,49 @@
   <div id="backdrop" class="backdrop" hidden></div>
 
   <header class="site-header" role="banner">
-  <div class="container header-wrap">
-    <div class="brand" aria-label="Impacto Adm">
-      <!-- LOGO Impacto Adm no cabeçalho -->
-      <img src="assets/img/original.png" alt="Impacto Adm" class="brand-logo" width="160" height="auto" decoding="async" loading="eager" />
-      <span class="brand-text">Administração — Campus Paraíso do Tocantins</span>
+    <div class="container header-wrap">
+      <div class="brand" aria-label="Impacto Adm">
+        <!-- LOGO Impacto Adm no cabeçalho (tamanho controlado por CSS) -->
+        <img src="assets/img/original.png" alt="Impacto Adm" class="brand-logo" width="160" decoding="async" loading="eager" />
+        <span class="brand-text">Administração — Campus Paraíso do Tocantins</span>
+      </div>
+
+      <nav class="site-nav" aria-label="Navegação principal">
+        <button class="nav-toggle js-only" aria-expanded="false" aria-controls="menu-principal">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-text">Menu</span>
+        </button>
+
+        <ul id="menu-principal" class="nav-list">
+          <li><a href="#porque">Por que o curso?</a></li>
+          <li><a href="#competencias">Competências</a></li>
+          <li><a href="#vida-campus">Vida no Campus</a></li>
+          <li><a href="#processo">Processo Seletivo</a></li>
+          <li><a href="#inscricao" class="btn btn-small btn-secondary" data-track="cta_menu_news">Quero receber novidades</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <nav class="site-nav" aria-label="Navegação principal">
-      <button class="nav-toggle js-only" aria-expanded="false" aria-controls="menu-principal">
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-        <span class="nav-toggle-text">Menu</span>
-      </button>
-
-      <ul id="menu-principal" class="nav-list">
-        <li><a href="#porque">Por que o curso?</a></li>
-        <li><a href="#competencias">Competências</a></li>
-        <li><a href="#vida-campus">Vida no Campus</a></li>
-        <li><a href="#processo">Processo Seletivo</a></li>
-        <!-- Botão do menu com contraste corrigido -->
-        <li><a href="#inscricao" class="btn btn-small btn-secondary">Quero receber novidades</a></li>
-      </ul>
-    </nav>
-  </div>
-  ...
-</header>
+  <!-- Hero opcional (reforça profissionalismo visual do topo) -->
+  <section class="hero" aria-label="Destaque">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-media" aria-hidden="true">
+      <!-- Você pode inserir uma imagem responsiva aqui, se desejar -->
+      <!-- <img src="assets/img/hero.jpg" alt="" /> -->
+    </div>
+    <div class="container hero-content">
+      <span class="kicker">Administração — IFTO</span>
+      <h1>Formação presencial, prática e conectada à região</h1>
+      <p class="subtitle">Projetos, extensão, estágio e TCC com metodologias ativas.</p>
+      <div class="hero-ctas">
+        <a href="#inscricao" class="btn btn-primary" data-track="cta_hero_primary">Quero receber novidades</a>
+        <a href="#porque" class="btn btn-ghost" data-track="cta_hero_ghost">Conheça o curso</a>
+      </div>
+    </div>
+  </section>
 
   <main id="conteudo-principal" tabindex="-1">
     <!-- Barra de prova social (texto sutil) -->
@@ -337,30 +353,39 @@
   </main>
 
   <footer class="site-footer" role="contentinfo">
-  <div class="container footer-grid">
-    <div>
-      <!-- LOGO Black no rodapé, em badge branco para contraste -->
-      <div class="footer-logo-wrap" aria-label="Logo Impacto Adm">
-        <img src="assets/img/Black.png" alt="Impacto Adm" class="footer-logo" width="140" height="auto" decoding="async" loading="lazy" />
-      </div>
+    <div class="container footer-grid">
+      <div>
+        <!-- LOGO Black no rodapé, em badge branco para contraste -->
+        <div class="footer-logo-wrap" aria-label="Logo Impacto Adm">
+          <img src="assets/img/Black.png" alt="Impacto Adm" class="footer-logo" width="140" decoding="async" loading="lazy" />
+        </div>
 
-      <h3>Administração — IFTO (Campus Paraíso do Tocantins)</h3>
-      <p>Formação presencial com projetos, extensão, estágio e TCC.</p>
+        <h3>Administração — IFTO (Campus Paraíso do Tocantins)</h3>
+        <p>Formação presencial com projetos, extensão, estágio e TCC.</p>
+      </div>
+      <div>
+        <h3>Conformidade</h3>
+        <ul class="footer-links">
+          <li><span>Política de privacidade</span></li>
+          <li><span>Canais oficiais do campus</span></li>
+          <li><span>Meios de contato</span></li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <h3>Conformidade</h3>
-      <ul class="footer-links">
-        <li><span>Política de privacidade</span></li>
-        <li><span>Canais oficiais do campus</span></li>
-        <li><span>Meios de contato</span></li>
-      </ul>
+    <div class="container footer-base">
+      <p>© <span id="ano-atual"></span> IFTO — Campus Paraíso do Tocantins</p>
+      <p class="credit">
+        Site desenvolvido com
+        <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 21s-6.716-4.252-9.2-7.4C.97 10.594 2.02 7.5 4.7 6.4c1.87-.79 4.07-.21 5.3 1.2 1.23-1.41 3.43-1.99 5.3-1.2 2.68 1.1 3.73 4.194 1.9 7.2C18.716 16.748 12 21 12 21z"
+                fill="none" stroke="#DC2626" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        por <strong>Impacto Adm</strong>
+      </p>
     </div>
-  </div>
-  <div class="container footer-base">
-    <p>© <span id="ano-atual"></span> IFTO — Campus Paraíso do Tocantins</p>
-  </div>
-</footer>
+  </footer>
+
   <!-- JS principal (com versão para evitar cache) -->
-  <script src="script.js?v=1.0.2" defer></script>
+  <script src="script.js?v=1.1.0" defer></script>
 </body>
 </html>
