@@ -74,78 +74,79 @@ body {
 .skip-link:focus { left: var(--space-2); }
 
 /* ===========================
-   Header e Navegação
+   Header e Navegação (melhorado)
 =========================== */
 .site-header {
   color: #fff;
   background: linear-gradient(180deg, var(--brand-800) 0%, var(--brand-700) 100%);
-  position: relative;
+  position: sticky; /* antes: relative */
+  top: 0;
+  z-index: 1000;
   overflow: clip;
+  box-shadow: 0 4px 20px rgba(10,37,64,.18);
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
 .header-wrap {
   display: flex; align-items: center; justify-content: space-between;
-  padding: var(--space-4) 0;
+  padding: var(--space-5) 0; /* + respiro versus var(--space-4) */
 }
 
-.brand { display: flex; align-items: baseline; gap: 10px; font-weight: 700; }
-.brand-mark {
-  display: inline-grid; place-items: center;
-  width: 42px; height: 42px; border-radius: 10px;
-  background: #ffffff; color: var(--brand-700);
-  font-weight: 800;
+.brand {
+  display: flex; align-items: center; gap: 12px; /* antes: baseline */
+  font-weight: 700;
 }
 
-/* O texto ao lado da logo continua visível sobre o gradiente azul */
-.brand-text {
-  font-size: 14px;
-  opacity: 0.92;
-  color: #fff;
-}
-
-/* ========== LOGO no cabeçalho ========== */
+/* LOGO maior no cabeçalho */
 .brand-logo {
   display: inline-block;
-  height: 42px;         /* Mantém proporção em cabeçalho */
+  height: 56px; /* antes: 42px */
   width: auto;
-  margin-right: 10px;
+  margin-right: 8px;
   vertical-align: middle;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.15));
 }
 
-/* ========== Correção de contraste do botão no menu ========== */
-/* Antes, .site-nav a { color: #fff } aplicava em todos os links, inclusive nos botões.
-   Agora, limitamos a regra para links que NÃO são .btn. */
+@media (max-width: 900px) {
+  .brand-logo { height: 48px; }
+}
+
+/* Texto ao lado da logo, com melhor legibilidade */
+.brand-text {
+  font-size: 15px;
+  opacity: 0.95;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: .2px;
+}
+
+/* Links do menu (com hover/focus modernizados) */
 .site-nav a:not(.btn) {
   color: #fff;
   text-decoration: none;
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-sm);
   font-weight: 600; letter-spacing: .2px;
+  transition: background .2s ease, color .2s ease;
+}
+.site-nav a:not(.btn):hover,
+.site-nav a:not(.btn):focus-visible {
+  background: rgba(255,255,255,0.08);
+  outline: none;
 }
 
-/* Garante que o botão secundário no menu apareça com texto escuro sobre fundo branco,
-   independente da regra acima */
+/* Botão secundário do menu com contraste garantido */
 .site-nav .nav-list .btn-secondary {
   background: #ffffff !important;
   color: var(--ink-900) !important;
   border-color: rgba(255,255,255,0);
 }
-
-/* Estados de foco/hover do botão secundário no menu */
 .site-nav .nav-list .btn-secondary:hover,
 .site-nav .nav-list .btn-secondary:focus-visible {
   background: #F2F6FF !important;
   color: var(--ink-900) !important;
   box-shadow: 0 0 0 3px var(--focus-ring);
   outline: none;
-}
-
-/* Em mobile, o menu vira um “top sheet”; manter contraste do botão */
-@media (max-width: 900px) {
-  .site-nav .nav-list .btn-secondary {
-    background: #ffffff !important;
-    color: var(--ink-900) !important;
-  }
 }
 
 .nav-toggle {
@@ -164,14 +165,12 @@ body {
 .backdrop.show { opacity: 1; pointer-events: auto; }
 
 /* ===========================
-   Hero (imagem responsiva + overlay)
+   Hero
 =========================== */
 .hero {
   position: relative;
   padding: var(--space-12) 0 var(--space-16);
 }
-
-/* Fundo de segurança (aparece se a imagem não carregar) */
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
   background:
@@ -179,8 +178,6 @@ body {
     radial-gradient(240px 240px at 85% 10%, rgba(6,182,212,.20) 0%, transparent 70%),
     linear-gradient(180deg, rgba(10,37,64,.35), rgba(10,37,64,.35));
 }
-
-/* Imagem do hero com overlay azul para legibilidade */
 .hero-media {
   position: absolute; inset: 0; z-index: 0;
   display: block;
@@ -189,14 +186,11 @@ body {
   width: 100%; height: 100%; object-fit: cover;
   filter: brightness(.65) saturate(1.05);
 }
-
-/* Overlay em gradiente por cima da imagem */
 .hero::after {
   content: "";
   position: absolute; inset: 0; z-index: 0;
   background: linear-gradient(180deg, rgba(10,37,64,.35), rgba(10,37,64,.35));
 }
-
 .hero-content { position: relative; z-index: 1; padding-top: var(--space-6); }
 .kicker {
   color: #DCEBFF; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; font-size: 12px;
@@ -430,37 +424,47 @@ input:focus, select:focus, textarea:focus {
 .faq-body { margin-top: var(--space-3); color: var(--ink-700); }
 
 /* ===========================
-   Footer
+   Footer (logo maior + crédito)
 =========================== */
-/* ========== Logo no rodapé ========== */
-/* Badge branco para alojar a Black.png (preta) sobre rodapé escuro */
+.site-footer { background: #0B0D11; color: #E5E7EB; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-6); padding: var(--space-8) 0; }
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin: 6px 0; }
+
 .footer-logo-wrap {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: #ffffff;
   border-radius: 10px;
-  padding: 8px 10px;
+  padding: 10px 12px; /* antes: 8px 10px */
   margin-bottom: var(--space-3);
   box-shadow: var(--shadow-sm);
 }
-
 .footer-logo {
   display: block;
-  height: 28px;   /* Ajuste fino de altura no rodapé */
+  height: 40px; /* antes: 28px */
   width: auto;
 }
+.site-footer h3 { margin-top: 8px; } /* antes: 6px */
 
-/* Ajuste de espaçamento caso a logo deixe o título muito próximo */
-.site-footer h3 {
-  margin-top: 6px;
+.footer-base {
+  border-top: 1px solid #1f2a26;
+  padding: var(--space-4) 0 var(--space-8);
+  font-size: 14px;
+  opacity: 0.9;
+  display: grid;
+  gap: 6px; /* empilha © e crédito com respiro */
 }
 
-.site-footer { background: #0B0D11; color: #E5E7EB; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-6); padding: var(--space-8) 0; }
-.footer-links { list-style: none; padding: 0; margin: 0; }
-.footer-links li { margin: 6px 0; }
-.footer-base { border-top: 1px solid #1f2a26; padding: var(--space-4) 0 var(--space-8); font-size: 14px; opacity: 0.9; }
+.credit {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: #E5E7EB;
+}
+.credit .heart-icon {
+  width: 18px; height: 18px;
+  vertical-align: middle;
+}
 
 /* ===========================
    Navegação responsiva
