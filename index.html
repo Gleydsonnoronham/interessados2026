@@ -32,55 +32,33 @@
   <div id="backdrop" class="backdrop" hidden></div>
 
   <header class="site-header" role="banner">
-    <div class="container header-wrap">
-      <div class="brand" aria-label="IFTO Administração">
-        <span class="brand-mark" aria-hidden="true">IF</span>
-        <span class="brand-text">Administração — Campus Paraíso do Tocantins</span>
-      </div>
-
-      <nav class="site-nav" aria-label="Navegação principal">
-        <button class="nav-toggle js-only" aria-expanded="false" aria-controls="menu-principal">
-          <span class="nav-toggle-bar" aria-hidden="true"></span>
-          <span class="nav-toggle-bar" aria-hidden="true"></span>
-          <span class="nav-toggle-bar" aria-hidden="true"></span>
-          <span class="nav-toggle-text">Menu</span>
-        </button>
-
-        <ul id="menu-principal" class="nav-list">
-          <li><a href="#porque">Por que o curso?</a></li>
-          <li><a href="#competencias">Competências</a></li>
-          <li><a href="#vida-campus">Vida no Campus</a></li>
-          <li><a href="#processo">Processo Seletivo</a></li>
-          <li><a href="#inscricao" class="btn btn-small btn-secondary" data-track="cta_menu">Quero receber novidades</a></li>
-        </ul>
-      </nav>
+  <div class="container header-wrap">
+    <div class="brand" aria-label="Impacto Adm">
+      <!-- LOGO Impacto Adm no cabeçalho -->
+      <img src="assets/img/original.png" alt="Impacto Adm" class="brand-logo" width="160" height="auto" decoding="async" loading="eager" />
+      <span class="brand-text">Administração — Campus Paraíso do Tocantins</span>
     </div>
 
-    <!-- Hero com overlay e imagem responsiva -->
-    <section class="hero" id="topo" aria-label="Chamada principal">
-      <div class="hero-bg" aria-hidden="true"></div>
+    <nav class="site-nav" aria-label="Navegação principal">
+      <button class="nav-toggle js-only" aria-expanded="false" aria-controls="menu-principal">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
 
-      <picture class="hero-media" aria-hidden="true">
-        <!-- Mobile primeiro -->
-        <source srcset="assets/img/hero-mobile.jpg" media="(max-width: 640px)">
-        <!-- Desktop -->
-        <img src="assets/img/hero-desktop.jpg" alt="" loading="eager" decoding="async">
-      </picture>
-
-      <div class="container hero-content">
-        <p class="kicker">Graduação em Administração</p>
-        <h1>Profissionais para transformar realidades</h1>
-        <p class="subtitle">
-          Formação presencial, metodologias ativas e vivência prática.
-          Cadastre-se para receber em primeira mão as novidades do Vestibular 2026.
-        </p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#inscricao" data-track="cta_hero">Quero receber novidades do Vestibular 2026</a>
-          <a class="btn btn-ghost" href="#porque" data-track="cta_saiba_mais">Saiba mais</a>
-        </div>
-      </div>
-    </section>
-  </header>
+      <ul id="menu-principal" class="nav-list">
+        <li><a href="#porque">Por que o curso?</a></li>
+        <li><a href="#competencias">Competências</a></li>
+        <li><a href="#vida-campus">Vida no Campus</a></li>
+        <li><a href="#processo">Processo Seletivo</a></li>
+        <!-- Botão do menu com contraste corrigido -->
+        <li><a href="#inscricao" class="btn btn-small btn-secondary">Quero receber novidades</a></li>
+      </ul>
+    </nav>
+  </div>
+  ...
+</header>
 
   <main id="conteudo-principal" tabindex="-1">
     <!-- Barra de prova social (texto sutil) -->
