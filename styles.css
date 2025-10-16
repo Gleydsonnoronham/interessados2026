@@ -95,16 +95,58 @@ body {
   background: #ffffff; color: var(--brand-700);
   font-weight: 800;
 }
-.brand-text { font-size: 14px; opacity: 0.92; }
 
-.site-nav .nav-list {
-  display: flex; gap: var(--space-4); list-style: none; padding: 0; margin: 0;
+/* O texto ao lado da logo continua visível sobre o gradiente azul */
+.brand-text {
+  font-size: 14px;
+  opacity: 0.92;
+  color: #fff;
 }
-.site-nav a {
-  color: #fff; text-decoration: none; padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm);
+
+/* ========== LOGO no cabeçalho ========== */
+.brand-logo {
+  display: inline-block;
+  height: 42px;         /* Mantém proporção em cabeçalho */
+  width: auto;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* ========== Correção de contraste do botão no menu ========== */
+/* Antes, .site-nav a { color: #fff } aplicava em todos os links, inclusive nos botões.
+   Agora, limitamos a regra para links que NÃO são .btn. */
+.site-nav a:not(.btn) {
+  color: #fff;
+  text-decoration: none;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
   font-weight: 600; letter-spacing: .2px;
 }
-.site-nav a:hover, .site-nav a:focus-visible { background: rgba(255,255,255,.12); outline: none; }
+
+/* Garante que o botão secundário no menu apareça com texto escuro sobre fundo branco,
+   independente da regra acima */
+.site-nav .nav-list .btn-secondary {
+  background: #ffffff !important;
+  color: var(--ink-900) !important;
+  border-color: rgba(255,255,255,0);
+}
+
+/* Estados de foco/hover do botão secundário no menu */
+.site-nav .nav-list .btn-secondary:hover,
+.site-nav .nav-list .btn-secondary:focus-visible {
+  background: #F2F6FF !important;
+  color: var(--ink-900) !important;
+  box-shadow: 0 0 0 3px var(--focus-ring);
+  outline: none;
+}
+
+/* Em mobile, o menu vira um “top sheet”; manter contraste do botão */
+@media (max-width: 900px) {
+  .site-nav .nav-list .btn-secondary {
+    background: #ffffff !important;
+    color: var(--ink-900) !important;
+  }
+}
 
 .nav-toggle {
   border: 1px solid rgba(255,255,255,0.4);
@@ -390,6 +432,30 @@ input:focus, select:focus, textarea:focus {
 /* ===========================
    Footer
 =========================== */
+/* ========== Logo no rodapé ========== */
+/* Badge branco para alojar a Black.png (preta) sobre rodapé escuro */
+.footer-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-bottom: var(--space-3);
+  box-shadow: var(--shadow-sm);
+}
+
+.footer-logo {
+  display: block;
+  height: 28px;   /* Ajuste fino de altura no rodapé */
+  width: auto;
+}
+
+/* Ajuste de espaçamento caso a logo deixe o título muito próximo */
+.site-footer h3 {
+  margin-top: 6px;
+}
+
 .site-footer { background: #0B0D11; color: #E5E7EB; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-6); padding: var(--space-8) 0; }
 .footer-links { list-style: none; padding: 0; margin: 0; }
