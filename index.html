@@ -18,13 +18,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
 
-  <link rel="preload" href="styles.css" as="style" />
-  <link rel="stylesheet" href="styles.css" />
+  <!-- CSS principal (com versão para evitar cache) -->
+  <link rel="stylesheet" href="styles.css?v=1.0.2" />
 
   <noscript>
-    <style>
-      .js-only { display: none !important; }
-    </style>
+    <style>.js-only { display: none !important; }</style>
   </noscript>
 </head>
 <body>
@@ -53,16 +51,22 @@
           <li><a href="#competencias">Competências</a></li>
           <li><a href="#vida-campus">Vida no Campus</a></li>
           <li><a href="#processo">Processo Seletivo</a></li>
-          <li><a href="#inscricao" class="btn btn-small btn-secondary">Quero receber novidades</a></li>
+          <li><a href="#inscricao" class="btn btn-small btn-secondary" data-track="cta_menu">Quero receber novidades</a></li>
         </ul>
       </nav>
     </div>
 
-    <!-- Hero com overlay e “onda de impacto” -->
+    <!-- Hero com overlay e imagem responsiva -->
     <section class="hero" id="topo" aria-label="Chamada principal">
-      <div class="hero-bg" aria-hidden="true">
-        <!-- Ornamento “ondas de impacto” criado via CSS -->
-      </div>
+      <div class="hero-bg" aria-hidden="true"></div>
+
+      <picture class="hero-media" aria-hidden="true">
+        <!-- Mobile primeiro -->
+        <source srcset="assets/img/hero-mobile.jpg" media="(max-width: 640px)">
+        <!-- Desktop -->
+        <img src="assets/img/hero-desktop.jpg" alt="" loading="eager" decoding="async">
+      </picture>
+
       <div class="container hero-content">
         <p class="kicker">Graduação em Administração</p>
         <h1>Profissionais para transformar realidades</h1>
@@ -71,15 +75,15 @@
           Cadastre-se para receber em primeira mão as novidades do Vestibular 2026.
         </p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="#inscricao">Quero receber novidades do Vestibular 2026</a>
-          <a class="btn btn-ghost" href="#porque">Saiba mais</a>
+          <a class="btn btn-primary" href="#inscricao" data-track="cta_hero">Quero receber novidades do Vestibular 2026</a>
+          <a class="btn btn-ghost" href="#porque" data-track="cta_saiba_mais">Saiba mais</a>
         </div>
       </div>
     </section>
   </header>
 
   <main id="conteudo-principal" tabindex="-1">
-    <!-- Barra de prova social (opcional) -->
+    <!-- Barra de prova social (texto sutil) -->
     <section class="section slim trustbar" aria-label="Prova social">
       <div class="container trustbar-wrap">
         <span class="trust-hint">Integração com a comunidade e projetos</span>
@@ -173,6 +177,60 @@
       </div>
     </section>
 
+    <!-- Depoimentos (Prova social) -->
+    <section id="depoimentos" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="micro">Prova social</span>
+          <h2>O que dizem nossos estudantes</h2>
+        </div>
+
+        <div class="testimonials">
+          <!-- Depoimento 1 -->
+          <figure class="testimonial">
+            <div class="avatar">
+              <img src="assets/img/depo1.jpg" alt="Foto da pessoa do depoimento 1" loading="lazy" decoding="async" />
+            </div>
+            <blockquote class="quote">
+              “O curso me ajudou a transformar ideias em projetos reais. A imersão empreendedora fez toda a diferença.”
+            </blockquote>
+            <figcaption class="author">
+              <span class="name">[Nome do(a) Estudante]</span>
+              <span class="role">Estudante de Administração</span>
+            </figcaption>
+          </figure>
+
+          <!-- Depoimento 2 -->
+          <figure class="testimonial">
+            <div class="avatar">
+              <img src="assets/img/depo2.jpg" alt="Foto da pessoa do depoimento 2" loading="lazy" decoding="async" />
+            </div>
+            <blockquote class="quote">
+              “A prática e os projetos de extensão me deram segurança para atuar na região com impacto real.”
+            </blockquote>
+            <figcaption class="author">
+              <span class="name">[Nome do(a) Egresso(a)]</span>
+              <span class="role">Egresso(a)</span>
+            </figcaption>
+          </figure>
+
+          <!-- Depoimento 3 -->
+          <figure class="testimonial">
+            <div class="avatar">
+              <img src="assets/img/depo3.jpg" alt="Foto da pessoa do depoimento 3" loading="lazy" decoding="async" />
+            </div>
+            <blockquote class="quote">
+              “Docentes próximos e infraestrutura de qualidade. Foi essencial para meu desenvolvimento.”
+            </blockquote>
+            <figcaption class="author">
+              <span class="name">[Nome do(a) Estudante]</span>
+              <span class="role">Bolsista de Extensão</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <!-- Formulário -->
     <section id="inscricao" class="section emphasis" aria-labelledby="titulo-form">
       <div class="container narrow">
@@ -245,7 +303,7 @@
           <input type="hidden" id="event_conversao" name="event_conversao" value="lead_submit" />
 
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary" aria-label="Enviar cadastro">Quero receber novidades do Vestibular 2026</button>
+            <button type="submit" class="btn btn-primary" aria-label="Enviar cadastro" data-track="cta_form_submit">Quero receber novidades do Vestibular 2026</button>
             <p class="form-feedback" id="form-feedback" role="status" aria-live="polite" hidden></p>
           </div>
         </form>
@@ -257,7 +315,7 @@
       </div>
     </section>
 
-    <!-- FAQ aprimorado -->
+    <!-- FAQ -->
     <section id="faq" class="section">
       <div class="container">
         <h2>Perguntas frequentes (FAQ)</h2>
@@ -320,6 +378,7 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <!-- JS principal (com versão para evitar cache) -->
+  <script src="script.js?v=1.0.2" defer></script>
 </body>
 </html>
