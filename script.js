@@ -3,12 +3,24 @@ const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
 /* =========================================
+   Inicialização segura de armazenamento local
+   (correção: leads/logs devem existir)
+========================================= */
+let leads = [];
+let logs = [];
+try {
+} catch (_) { leads = []; }
+try {
+} catch (_) { logs = []; }
+
+/* =========================================
    Navegação mobile com backdrop e acessibilidade
 ========================================= */
 (function navToggle() {
   const btn = $('.nav-toggle');
   const menu = $('#menu-principal');
   const backdrop = $('#backdrop');
+
 
   const openMenu = () => {
     menu.classList.add('open');
@@ -45,12 +57,15 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 })();
 
 /* =========================================
-   Captura de UTM (utm_source, utm_medium, utm_campaign, utm_content)
+   Captura de UTM (correção: aplicar valores aos campos)
 ========================================= */
 (function utmCapture() {
   const params = new URLSearchParams(window.location.search);
   const setVal = (id, key) => {
     const el = document.getElementById(id);
+    if (!el) return;
+    const val = params.get(key);
+    if (val) el.value = val;
   };
   setVal('utm_source', 'utm_source');
   setVal('utm_medium', 'utm_medium');
@@ -78,6 +93,7 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
 /* =========================================
    Validação de formulário e submissão (localStorage)
+   (correção: validação de email/fluxo)
 ========================================= */
 (function formHandler() {
   const form = $('#lead-form');
@@ -97,12 +113,14 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    // limpa mensagens anteriores
     ['erro-nome','erro-email','erro-lgpd'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.textContent = '';
     });
     [nome, email, lgpd].forEach(el => el && el.setAttribute('aria-invalid', 'false'));
 
+    // honeypot
     if (hp && hp.value.trim() !== '') return;
 
     let ok = true;
@@ -114,17 +132,18 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
       nome.focus();
     }
 
+    if (!validateEmail(email.value.trim())) {
       ok = false;
       const e2 = $('#erro-email'); if (e2) e2.textContent = 'Informe um e-mail válido.';
       email.setAttribute('aria-invalid', 'true');
-      if (ok) email.focus();
+      if (document.activeElement !== nome) email.focus();
     }
 
     if (!lgpd.checked) {
       ok = false;
       const e3 = $('#erro-lgpd'); if (e3) e3.textContent = 'É necessário autorizar o uso dos dados para contato.';
       lgpd.setAttribute('aria-invalid', 'true');
-      if (ok) lgpd.focus();
+      if (document.activeElement !== nome && document.activeElement !== email) lgpd.focus();
     }
 
     if (!ok) return;
@@ -168,11 +187,8 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
 /* =========================================
    Mensuração básica (sem serviços externos)
-   - Você pode substituir por GA/Tag Manager no futuro.
 ========================================= */
 function trackEvent(action, params = {}) {
-  // 1) Registro no console (visualização rápida)
-  // 2) Persistência simples no localStorage (histórico local)
   try {
     console.log('[trackEvent]', action, params);
     logs.push({ action, params, ts: Date.now() });
@@ -180,24 +196,11 @@ function trackEvent(action, params = {}) {
   } catch(_) {}
 }
 
-// Clique em CTAs (Hero, Menu, Form)
+// Clique em CTAs (Hero, Menu, Form) — correção: preencher handler
 (function trackCTAs() {
   $$('[data-track]').forEach(el => {
     el.addEventListener('click', () => {
-    });
-  });
-})();
-
-// Abertura de FAQ (útil para saber o que gera mais dúvidas)
-(function trackFAQ() {
-  $$('#faq .faq-item > summary').forEach(s => {
-    s.addEventListener('click', () => {
-      const question = s.textContent.trim();
-      const isOpen = s.parentElement?.open === true; // estado pós-clique no next tick
-      // Pequeno delay para capturar o estado correto
-      setTimeout(() => {
-        trackEvent('faq_toggle', { question, open: s.parentElement?.open === true });
-      }, 0);
+      trackEvent(id, { text: el.textContent?.trim() });
     });
   });
 })();
