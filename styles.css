@@ -527,3 +527,12 @@ input[aria-invalid="true"] {
 .btn[disabled] .btn-text {
   display: none;
 }
+
+/* Adicione no final do seu style.css */
+.form-feedback.success {
+  color: #10b981;
+}
+
+.form-feedback.error {
+  color: #ef4444;
+}
