@@ -21,7 +21,6 @@ try {
   const menu = $('#menu-principal');
   const backdrop = $('#backdrop');
 
-
   const openMenu = () => {
     menu.classList.add('open');
     btn.setAttribute('aria-expanded', 'true');
@@ -92,8 +91,31 @@ try {
 })();
 
 /* =========================================
-   Validação de formulário e submissão (localStorage)
-   (correção: validação de email/fluxo)
+   Função para enviar dados ao Google Sheets
+========================================= */
+async function submitToGoogleSheets(formData) {
+  try {
+    // 🔴 SUBSTITUA ESTA URL PELA SUA WEB APP URL DO GOOGLE APPS SCRIPT
+    const scriptURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+    
+    const response = await fetch(scriptURL, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Erro ao enviar para Google Sheets:', error);
+    throw error;
+  }
+}
+
+/* =========================================
+   Validação de formulário e submissão (Google Sheets)
+   (substitui localStorage pela integração real)
 ========================================= */
 (function formHandler() {
   const form = $('#lead-form');
@@ -120,7 +142,7 @@ try {
     });
     [nome, email, lgpd].forEach(el => el && el.setAttribute('aria-invalid', 'false'));
 
-    // honeypot
+    // honeypot - proteção anti-spam
     if (hp && hp.value.trim() !== '') return;
 
     let ok = true;
@@ -148,40 +170,74 @@ try {
 
     if (!ok) return;
 
+    // Coleta dados dos checkboxes de interesses
     const interesses = Array.from(document.querySelectorAll('input[name="interesses"]:checked')).map(i => i.value);
 
-    const utm = {
-    };
+    // Cria FormData para envio
+    const formData = new FormData();
+    formData.append('nome', nome.value.trim());
+    formData.append('email', email.value.trim());
+    formData.append('telefone', telefone.value.trim());
+    formData.append('cidade', cidade.value.trim());
+    formData.append('conclusao', conclusao.value.trim());
+    formData.append('interesses', interesses.join(', '));
+    formData.append('lgpd', lgpd.checked ? 'Sim' : 'Não');
+    
+    // Adiciona parâmetros UTM
+    const utmFields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+    utmFields.forEach(field => {
+      const input = document.getElementById(field);
+      if (input && input.value) {
+        formData.append(field, input.value);
+      }
+    });
+    formData.append('event_conversao', 'lead_submit');
 
-    const payload = {
-      nome: nome.value.trim(),
-      email: email.value.trim(),
-      telefone: telefone.value.trim(),
-      cidade: cidade.value.trim(),
-      conclusao: conclusao.value.trim(),
-      interesses,
-      lgpd: true,
-      event: 'lead_submit',
-      ...utm,
-      timestamp: new Date().toISOString()
-    };
+    // Atualiza UI para estado de carregamento
+    const submitBtn = form.querySelector('[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Enviando...';
 
     try {
-      leads.push(payload);
-      localStorage.setItem('leads_ifto_admin', JSON.stringify(leads));
-    } catch (err) {
-      // Ignorar em ambientes que bloqueiam localStorage
+      // Envia para Google Sheets
+      const result = await submitToGoogleSheets(formData);
+      
+      if (result.success) {
+        // Sucesso!
+        if (feedback) {
+          feedback.hidden = false;
+          feedback.textContent = 'Cadastro recebido com sucesso. Você receberá nosso e-mail de boas-vindas em breve.';
+          feedback.className = 'form-feedback success'; // Adiciona classe de sucesso
+        }
+        
+        // Mensuração do submit
+        trackEvent('form_submit', { form: 'lead_form' });
+        
+        // Limpa formulário
+        form.reset();
+        
+      } else {
+      }
+    } catch (error) {
+      console.error('Erro no envio:', error);
+      if (feedback) {
+        feedback.hidden = false;
+        feedback.textContent = 'Ocorreu um erro ao enviar seu cadastro. Por favor, tente novamente mais tarde.';
+        feedback.className = 'form-feedback error'; // Adiciona classe de erro
+      }
+    } finally {
+      // Restaura botão original
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+      
+      // Esconde mensagem após 5 segundos
+      if (feedback) {
+        setTimeout(() => {
+          feedback.hidden = true;
+        }, 5000);
+      }
     }
-
-    if (feedback) {
-      feedback.hidden = false;
-      feedback.textContent = 'Cadastro recebido com sucesso. Você receberá nosso e-mail de boas-vindas em breve.';
-    }
-
-    // Mensuração do submit (genérico)
-    trackEvent('form_submit', { form: 'lead_form' });
-
-    form.reset();
   });
 })();
 
@@ -200,6 +256,7 @@ function trackEvent(action, params = {}) {
 (function trackCTAs() {
   $$('[data-track]').forEach(el => {
     el.addEventListener('click', () => {
+      const id = el.dataset.track; // Correção: usar dataset.track
       trackEvent(id, { text: el.textContent?.trim() });
     });
   });
