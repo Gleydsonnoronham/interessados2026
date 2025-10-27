@@ -96,7 +96,7 @@ try {
 async function submitToGoogleSheets(formData) {
   try {
     // 🔴 SUBSTITUA ESTA URL PELA SUA WEB APP URL DO GOOGLE APPS SCRIPT
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwE945zvzZsHgOsqPJlQ_EMOCnbFFdpSG0rGzVn06KiVcz8yzplc7gmDAQCGP3sVSZ1/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxxWDHfpqt9Tdz6sm7dF4Y0iwFkeAhmLNBlSEgM-X4QMZ9mJ1OjBoh55nAje6wUWlYv/exec';
     
     const response = await fetch(scriptURL, {
       method: 'POST',
