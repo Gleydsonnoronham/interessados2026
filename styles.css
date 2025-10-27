@@ -495,3 +495,35 @@ input[aria-invalid="true"] {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* Adicione estas linhas no final do seu style.css */
+.form-feedback.success {
+  color: #10b981;
+  font-weight: 500;
+}
+
+.form-feedback.error {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.hp-field {
+  position: absolute !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  white-space: nowrap !important;
+}
+
+.btn-loading {
+  display: inline-block;
+}
+
+.btn[disabled] .btn-loading {
+  display: inline-block;
+}
+
+.btn[disabled] .btn-text {
+  display: none;
+}
