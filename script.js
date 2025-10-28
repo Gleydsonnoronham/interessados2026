@@ -95,14 +95,19 @@ try {
 ========================================= */
 async function submitToGoogleSheets(formData) {
   try {
-    // 🔴 SUBSTITUA ESTA URL PELA SUA WEB APP URL DO GOOGLE APPS SCRIPT
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxxWDHfpqt9Tdz6sm7dF4Y0iwFkeAhmLNBlSEgM-X4QMZ9mJ1OjBoh55nAje6wUWlYv/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwE945zvzZsHgOsqPJlQ_EMOCnbFFdpSG0rGzVn06KiVcz8yzplc7gmDAQCGP3sVSZ1/exec';
+    
+    // Converter FormData para URL-encoded string
+    const params = new URLSearchParams();
+    for (let [key, value] of formData.entries()) {
+      params.append(key, value);
+    }
     
     const response = await fetch(scriptURL, {
       method: 'POST',
-      body: formData,
+      body: params,
       headers: {
-        'Accept': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded',
       }
     });
     
