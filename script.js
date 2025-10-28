@@ -98,7 +98,7 @@ try {
 ========================================= */
 async function submitToGoogleSheets(formData) {
   try {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwE945zvzZsHgOsqPJlQ_EMOCnbFFdpSG0rGzVn06KiVcz8yzplc7gmDAQCGP3sVSZ1/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxxWDHfpqt9Tdz6sm7dF4Y0iwFkeAhmLNBlSEgM-X4QMZ9mJ1OjBoh55nAje6wUWlYv/exec';
     
     const params = new URLSearchParams();
     for (let [key, value] of formData.entries()) {
