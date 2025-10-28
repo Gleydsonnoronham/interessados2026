@@ -97,11 +97,12 @@ async function submitToGoogleSheets(formData) {
   try {
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwE945zvzZsHgOsqPJlQ_EMOCnbFFdpSG0rGzVn06KiVcz8yzplc7gmDAQCGP3sVSZ1/exec';
     
-    // Converter FormData para URL-encoded string
     const params = new URLSearchParams();
     for (let [key, value] of formData.entries()) {
       params.append(key, value);
     }
+    
+    console.log('Enviando dados:', Object.fromEntries(params)); // LOG ADICIONADO
     
     const response = await fetch(scriptURL, {
       method: 'POST',
@@ -111,7 +112,10 @@ async function submitToGoogleSheets(formData) {
       }
     });
     
-    return await response.json();
+    const result = await response.json();
+    console.log('Resposta recebida:', result); // LOG ADICIONADO
+    
+    return result;
   } catch (error) {
     console.error('Erro ao enviar para Google Sheets:', error);
     throw error;
