@@ -93,6 +93,9 @@ try {
 /* =========================================
    Função para enviar dados ao Google Sheets
 ========================================= */
+/* =========================================
+   Função para enviar dados ao Google Sheets
+========================================= */
 async function submitToGoogleSheets(formData) {
   try {
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwE945zvzZsHgOsqPJlQ_EMOCnbFFdpSG0rGzVn06KiVcz8yzplc7gmDAQCGP3sVSZ1/exec';
@@ -102,7 +105,7 @@ async function submitToGoogleSheets(formData) {
       params.append(key, value);
     }
     
-    console.log('Enviando dados:', Object.fromEntries(params)); // LOG ADICIONADO
+    console.log('Enviando dados:', Object.fromEntries(params));
     
     const response = await fetch(scriptURL, {
       method: 'POST',
@@ -113,7 +116,7 @@ async function submitToGoogleSheets(formData) {
     });
     
     const result = await response.json();
-    console.log('Resposta recebida:', result); // LOG ADICIONADO
+    console.log('Resposta recebida:', result);
     
     return result;
   } catch (error) {
