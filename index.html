@@ -227,87 +227,48 @@
 
     <!-- Formulário -->
     <section id="inscricao" class="section emphasis" aria-labelledby="titulo-form">
-      <div class="container narrow">
-        <h2 id="titulo-form">Cadastre-se para receber novidades do Vestibular 2026</h2>
+  <div class="container narrow">
+    <h2 id="titulo-form">Cadastre-se para receber novidades do Vestibular 2026</h2>
 
-        <form id="lead-form" novalidate>
-          <!-- Honeypot anti-spam (oculto) -->
-          <div class="hp-field" aria-hidden="true">
-            <label for="website">Não preencha este campo</label>
-            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
-          </div>
-
-          <div class="form-grid">
-            <div class="form-control">
-              <label for="nome">Nome completo</label>
-              <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Digite seu nome completo" />
-              <small class="error" id="erro-nome" role="alert" aria-live="polite"></small>
-            </div>
-
-            <div class="form-control">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" required autocomplete="email" placeholder="seuemail@exemplo.com" />
-              <small class="error" id="erro-email" role="alert" aria-live="polite"></small>
-            </div>
-
-            <div class="form-control">
-              <label for="telefone">Telefone/WhatsApp</label>
-              <input type="tel" id="telefone" name="telefone" inputmode="tel" placeholder="(00) 00000-0000" />
-              <small class="hint">Opcional, mas ajuda no contato.</small>
-            </div>
-
-            <div class="form-control">
-              <label for="cidade">Cidade/UF</label>
-              <input type="text" id="cidade" name="cidade" placeholder="Ex.: Paraíso do Tocantins/TO" />
-            </div>
-
-            <div class="form-control">
-              <label for="conclusao">Ano de conclusão do ensino médio</label>
-              <input type="number" id="conclusao" name="conclusao" min="2000" max="2100" step="1" placeholder="Ex.: 2025" />
-            </div>
-          </div>
-
-          <fieldset class="form-fieldset">
-            <legend>Interesses</legend>
-            <label class="check">
-              <input type="checkbox" name="interesses" value="Eventos no campus" />
-              <span>Eventos no campus</span>
-            </label>
-            <label class="check">
-              <input type="checkbox" name="interesses" value="Conteúdos do curso" />
-              <span>Conteúdos do curso</span>
-            </label>
-            <label class="check">
-              <input type="checkbox" name="interesses" value="Aviso de edital 2026" />
-              <span>Aviso de edital 2026</span>
-            </label>
-          </fieldset>
-
-          <label class="check required">
-            <input type="checkbox" id="lgpd" name="lgpd" required />
-            <span>Autorizo o uso dos meus dados para contato sobre o curso e processos seletivos do IFTO.</span>
-          </label>
-          <small class="error" id="erro-lgpd" role="alert" aria-live="polite"></small>
-
-          <!-- UTMs e mensuração -->
-          <input type="hidden" id="utm_source" name="utm_source" />
-          <input type="hidden" id="utm_medium" name="utm_medium" />
-          <input type="hidden" id="utm_campaign" name="utm_campaign" />
-          <input type="hidden" id="utm_content" name="utm_content" />
-          <input type="hidden" id="event_conversao" name="event_conversao" value="lead_submit" />
-
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary" aria-label="Enviar cadastro" data-track="cta_form_submit">Quero receber novidades do Vestibular 2026</button>
-            <p class="form-feedback" id="form-feedback" role="status" aria-live="polite" hidden></p>
-          </div>
-        </form>
-
-        <p class="form-footnote">
-          Ao enviar, você receberá um e-mail de boas-vindas e uma sequência com:
-          “Conheça o curso”, “Vida no campus” e “Próximos passos”.
-        </p>
+    <form id="lead-form" novalidate>
+      <!-- Honeypot anti-spam (oculto) -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="website">Não preencha este campo</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
       </div>
-    </section>
+
+      <div class="form-grid">
+        <div class="form-control">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Digite seu nome completo" />
+          <small class="error" id="erro-nome" role="alert" aria-live="polite"></small>
+        </div>
+
+        <div class="form-control">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required autocomplete="email" placeholder="seuemail@exemplo.com" />
+          <small class="error" id="erro-email" role="alert" aria-live="polite"></small>
+        </div>
+      </div>
+
+      <label class="check required">
+        <input type="checkbox" id="lgpd" name="lgpd" required />
+        <span>Autorizo o uso dos meus dados para contato sobre o curso e processos seletivos do IFTO.</span>
+      </label>
+      <small class="error" id="erro-lgpd" role="alert" aria-live="polite"></small>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" aria-label="Enviar cadastro" data-track="cta_form_submit">Quero receber novidades do Vestibular 2026</button>
+        <p class="form-feedback" id="form-feedback" role="status" aria-live="polite" hidden></p>
+      </div>
+    </form>
+
+    <p class="form-footnote">
+      Ao enviar, você receberá um e-mail de boas-vindas e uma sequência com:
+      "Conheça o curso", "Vida no campus" e "Próximos passos".
+    </p>
+  </div>
+</section>
 
     <!-- FAQ -->
     <section id="faq" class="section">
