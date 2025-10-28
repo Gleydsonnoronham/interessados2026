@@ -126,6 +126,9 @@ async function submitToGoogleSheets(formData) {
    Validação de formulário e submissão (Google Sheets)
    (substitui localStorage pela integração real)
 ========================================= */
+/* =========================================
+   Validação de formulário e submissão (Google Sheets)
+========================================= */
 (function formHandler() {
   const form = $('#lead-form');
   if (!form) return;
@@ -144,6 +147,8 @@ async function submitToGoogleSheets(formData) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    console.log('Formulário submetido!'); // LOG DE TESTE
+
     // limpa mensagens anteriores
     ['erro-nome','erro-email','erro-lgpd'].forEach(id => {
       const el = document.getElementById(id);
@@ -152,7 +157,10 @@ async function submitToGoogleSheets(formData) {
     [nome, email, lgpd].forEach(el => el && el.setAttribute('aria-invalid', 'false'));
 
     // honeypot - proteção anti-spam
-    if (hp && hp.value.trim() !== '') return;
+    if (hp && hp.value.trim() !== '') {
+      console.log('Honeypot detectado - spam bloqueado');
+      return;
+    }
 
     let ok = true;
 
@@ -177,7 +185,12 @@ async function submitToGoogleSheets(formData) {
       if (document.activeElement !== nome && document.activeElement !== email) lgpd.focus();
     }
 
-    if (!ok) return;
+    if (!ok) {
+      console.log('Validação falhou');
+      return;
+    }
+
+    console.log('Validação OK - preparando envio'); // LOG DE TESTE
 
     // Coleta dados dos checkboxes de interesses
     const interesses = Array.from(document.querySelectorAll('input[name="interesses"]:checked')).map(i => i.value);
@@ -208,16 +221,20 @@ async function submitToGoogleSheets(formData) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Enviando...';
 
+    console.log('Chamando submitToGoogleSheets...'); // LOG DE TESTE
+
     try {
       // Envia para Google Sheets
       const result = await submitToGoogleSheets(formData);
+      
+      console.log('Resultado:', result); // LOG DE TESTE
       
       if (result.success) {
         // Sucesso!
         if (feedback) {
           feedback.hidden = false;
           feedback.textContent = 'Cadastro recebido com sucesso. Você receberá nosso e-mail de boas-vindas em breve.';
-          feedback.className = 'form-feedback success'; // Adiciona classe de sucesso
+          feedback.className = 'form-feedback success';
         }
         
         // Mensuração do submit
@@ -233,7 +250,7 @@ async function submitToGoogleSheets(formData) {
       if (feedback) {
         feedback.hidden = false;
         feedback.textContent = 'Ocorreu um erro ao enviar seu cadastro. Por favor, tente novamente mais tarde.';
-        feedback.className = 'form-feedback error'; // Adiciona classe de erro
+        feedback.className = 'form-feedback error';
       }
     } finally {
       // Restaura botão original
