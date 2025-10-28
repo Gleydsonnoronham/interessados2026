@@ -132,6 +132,9 @@ async function submitToGoogleSheets(formData) {
 /* =========================================
    Validação de formulário e submissão (Google Sheets)
 ========================================= */
+/* =========================================
+   Validação de formulário e submissão (Google Sheets)
+========================================= */
 (function formHandler() {
   const form = $('#lead-form');
   if (!form) return;
@@ -140,17 +143,12 @@ async function submitToGoogleSheets(formData) {
   const hp = $('#website');
   const nome = $('#nome');
   const email = $('#email');
-  const telefone = $('#telefone');
-  const cidade = $('#cidade');
-  const conclusao = $('#conclusao');
   const lgpd = $('#lgpd');
 
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email);
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    console.log('Formulário submetido!'); // LOG DE TESTE
 
     // limpa mensagens anteriores
     ['erro-nome','erro-email','erro-lgpd'].forEach(id => {
@@ -160,10 +158,7 @@ async function submitToGoogleSheets(formData) {
     [nome, email, lgpd].forEach(el => el && el.setAttribute('aria-invalid', 'false'));
 
     // honeypot - proteção anti-spam
-    if (hp && hp.value.trim() !== '') {
-      console.log('Honeypot detectado - spam bloqueado');
-      return;
-    }
+    if (hp && hp.value.trim() !== '') return;
 
     let ok = true;
 
@@ -188,35 +183,13 @@ async function submitToGoogleSheets(formData) {
       if (document.activeElement !== nome && document.activeElement !== email) lgpd.focus();
     }
 
-    if (!ok) {
-      console.log('Validação falhou');
-      return;
-    }
-
-    console.log('Validação OK - preparando envio'); // LOG DE TESTE
-
-    // Coleta dados dos checkboxes de interesses
-    const interesses = Array.from(document.querySelectorAll('input[name="interesses"]:checked')).map(i => i.value);
+    if (!ok) return;
 
     // Cria FormData para envio
     const formData = new FormData();
     formData.append('nome', nome.value.trim());
     formData.append('email', email.value.trim());
-    formData.append('telefone', telefone.value.trim());
-    formData.append('cidade', cidade.value.trim());
-    formData.append('conclusao', conclusao.value.trim());
-    formData.append('interesses', interesses.join(', '));
     formData.append('lgpd', lgpd.checked ? 'Sim' : 'Não');
-    
-    // Adiciona parâmetros UTM
-    const utmFields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
-    utmFields.forEach(field => {
-      const input = document.getElementById(field);
-      if (input && input.value) {
-        formData.append(field, input.value);
-      }
-    });
-    formData.append('event_conversao', 'lead_submit');
 
     // Atualiza UI para estado de carregamento
     const submitBtn = form.querySelector('[type="submit"]');
@@ -224,13 +197,9 @@ async function submitToGoogleSheets(formData) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Enviando...';
 
-    console.log('Chamando submitToGoogleSheets...'); // LOG DE TESTE
-
     try {
       // Envia para Google Sheets
       const result = await submitToGoogleSheets(formData);
-      
-      console.log('Resultado:', result); // LOG DE TESTE
       
       if (result.success) {
         // Sucesso!
