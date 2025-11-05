@@ -159,6 +159,7 @@ function updateLoadingProgress() {
     }
 }
 
+// No js/main.js, substitua a função finishLoading() por:
 function finishLoading() {
     isLoading = false;
     
@@ -167,21 +168,22 @@ function finishLoading() {
     
     if (loadingScreen) {
         loadingScreen.classList.add('hidden');
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-        }, 500);
+        loadingScreen.style.display = 'none';
     }
     
     if (mainContent) {
         mainContent.classList.add('visible');
-        
-        // Trigger inicial das animações
         triggerInitialAnimations();
     }
     
-    console.log('✅ Carregamento concluído');
+    console.log('✅ Conteúdo visível (imagens carregando em background)');
 }
 
+// E aumente o tempo mínimo de loading para quase zero:
+const CONFIG = {
+    loadingDuration: 300, // Reduzir de 2000 para 300ms
+    // ... resto das configurações
+};
 // ==============================================
 // ANIMAÇÕES DE SCROLL
 // ==============================================
