@@ -308,9 +308,10 @@ function getBrowserInfo(userAgent) {
 
 function checkWhatsAppApp() {
     // Detectar se o app do WhatsApp está instalado (aproximação)
-    return (navigator.userAgent.includes('Mobile') && 
+   return (navigator.userAgent.includes('Mobile') && (navigator.userAgent.includes('Android') || navigator.userAgent.includes('iPhone')));
 }
 
+            
 function handleWhatsAppRedirection(deviceInfo) {
     const link = WHATSAPP_GROUP_LINK;
     
