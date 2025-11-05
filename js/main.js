@@ -7,10 +7,10 @@ const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/EI0A77baSs4Kuu3XYMjYhb";
 
 // Configurações da aplicação
 const CONFIG = {
-    loadingDuration: 2000, // 2 segundos de loading
-    animationDelay: 100,   // Delay entre animações
-    scrollOffset: 100,     // Offset para animações no scroll
-    retryAttempts: 3,      // Tentativas de carregamento de mídia
+    loadingDuration: 300,   // Tempo mínimo de loading (300ms = quase instantâneo)
+    animationDelay: 100,    // Delay entre animações
+    scrollOffset: 100,      // Offset para animações no scroll
+    retryAttempts: 3,       // Tentativas de carregamento de mídia
 };
 
 // ==============================================
@@ -179,11 +179,6 @@ function finishLoading() {
     console.log('✅ Conteúdo visível (imagens carregando em background)');
 }
 
-// E aumente o tempo mínimo de loading para quase zero:
-const CONFIG = {
-    loadingDuration: 300, // Reduzir de 2000 para 300ms
-    // ... resto das configurações
-};
 // ==============================================
 // ANIMAÇÕES DE SCROLL
 // ==============================================
