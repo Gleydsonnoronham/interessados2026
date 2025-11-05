@@ -308,7 +308,7 @@ function getBrowserInfo(userAgent) {
 
 function checkWhatsAppApp() {
     // Detectar se o app do WhatsApp está instalado (aproximação)
-           (navigator.userAgent.includes('Mobile') && 
+    return (navigator.userAgent.includes('Mobile') && 
 }
 
 function handleWhatsAppRedirection(deviceInfo) {
