@@ -3,7 +3,7 @@
 // ==============================================
 
 // ⚠️ IMPORTANTE: Substitua este link pelo link real do seu grupo do WhatsApp
-const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/SEU_CODIGO_DO_GRUPO_AQUI";
+const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/EI0A77baSs4Kuu3XYMjYhb";
 
 // Configurações da aplicação
 const CONFIG = {
