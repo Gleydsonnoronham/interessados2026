@@ -548,7 +548,6 @@ function checkBrowserSupport() {
     const requiredFeatures = [
         'querySelector',
         'addEventListener',
-        'classList',
         'JSON'
     ];
     
@@ -558,7 +557,8 @@ function checkBrowserSupport() {
     );
     
     if (missingFeatures.length > 0) {
-        throw new Error(`Recursos não suportados: ${missingFeatures.join(', ')}`);
+        console.warn(`⚠️ Navegador antigo, algumas funcionalidades podem estar limitadas: ${missingFeatures.join(', ')}`);
+        // Não bloqueia mais - apenas avisa
     }
 }
 
