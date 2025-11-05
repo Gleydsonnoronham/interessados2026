@@ -1,352 +1,286 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Administração IFTO Paraíso | Vestibular 2026 — Cadastre-se</title>
-  <meta name="description" content="Graduação em Administração do IFTO (Campus Paraíso): presencial, metodologias ativas, estágio e TCC. Receba datas e novidades do Vestibular 2026." />
-
-  <!-- Open Graph básico -->
-  <meta property="og:title" content="Administração no IFTO — Paraíso do Tocantins" />
-  <meta property="og:description" content="Formação presencial, metodologias ativas e vivência prática. Cadastre-se para receber novidades do Vestibular 2026." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0A66C2" />
-
-  <!-- Tipografia: Manrope (títulos) + Inter (corpo) -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
-
-  <!-- CSS principal (com versão para evitar cache) -->
-  <link rel="stylesheet" href="styles.css?v=1.1.0" />
-
-  <noscript>
-    <style>.js-only { display: none !important; }</style>
-  </noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade Administração - Paraíso</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Junte-se à nossa comunidade de Administração e descubra oportunidades de crescimento profissional em Paraíso.">
+    <meta name="keywords" content="administração, empreendedorismo, paraíso, whatsapp, comunidade">
+    
+    <!-- Open Graph para compartilhamento -->
+    <meta property="og:title" content="Comunidade Administração - Paraíso">
+    <meta property="og:description" content="Sua jornada profissional começa aqui. Entre no grupo!">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
-
-  <!-- Backdrop para navegação mobile -->
-  <div id="backdrop" class="backdrop" hidden></div>
-
-  <header class="site-header" role="banner">
-    <div class="container header-wrap">
-      <div class="brand" aria-label="Impacto Adm">
-        <!-- LOGO Impacto Adm no cabeçalho (tamanho controlado por CSS) -->
-        <img src="assets/img/original.png" alt="Impacto Adm" class="brand-logo" width="160" decoding="async" loading="eager" />
-        <span class="brand-text">Administração — Campus Paraíso do Tocantins</span>
-      </div>
-
-      <nav class="site-nav" aria-label="Navegação principal">
-        <button class="nav-toggle js-only" aria-expanded="false" aria-controls="menu-principal">
-          <span class="nav-toggle-bar" aria-hidden="true"></span>
-          <span class="nav-toggle-bar" aria-hidden="true"></span>
-          <span class="nav-toggle-bar" aria-hidden="true"></span>
-          <span class="nav-toggle-text">Menu</span>
-        </button>
-
-        <ul id="menu-principal" class="nav-list">
-          <li><a href="#porque">Por que o curso?</a></li>
-          <li><a href="#competencias">Competências</a></li>
-          <li><a href="#vida-campus">Vida no Campus</a></li>
-          <li><a href="#processo">Processo Seletivo</a></li>
-          <li><a href="#inscricao" class="btn btn-small btn-secondary" data-track="cta_menu_news">Quero receber novidades</a></li>
-        </ul>
-      </nav>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Carregando sua jornada...</p>
     </div>
-  </header>
 
-  <!-- Hero opcional (reforça profissionalismo visual do topo) -->
-  <section class="hero" aria-label="Destaque">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-media" aria-hidden="true">
-      <!-- Você pode inserir uma imagem responsiva aqui, se desejar -->
-      <!-- <img src="assets/img/hero.jpg" alt="" /> -->
-    </div>
-    <div class="container hero-content">
-      <span class="kicker">Administração — IFTO</span>
-      <h1>Formação presencial, prática e conectada à região</h1>
-      <p class="subtitle">Projetos, extensão, estágio e TCC com metodologias ativas.</p>
-      <div class="hero-ctas">
-        <a href="#inscricao" class="btn btn-primary" data-track="cta_hero_primary">Quero receber novidades</a>
-        <a href="#porque" class="btn btn-ghost" data-track="cta_hero_ghost">Conheça o curso</a>
-      </div>
-    </div>
-  </section>
-
-  <main id="conteudo-principal" tabindex="-1">
-    <!-- Barra de prova social (texto sutil) -->
-    <section class="section slim trustbar" aria-label="Prova social">
-      <div class="container trustbar-wrap">
-        <span class="trust-hint">Integração com a comunidade e projetos</span>
-        <div class="trust-dots" aria-hidden="true"></div>
-      </div>
-    </section>
-
-    <!-- Por que o curso -->
-    <section id="porque" class="section">
-      <div class="container grid-two">
-        <div>
-          <h2>Por que o curso do IFTO?</h2>
-          <ul class="checklist">
-            <li>Formação completa: sala de aula + projetos + extensão + estágio + TCC.</li>
-            <li>Metodologias ativas e uso de tecnologias (Moodle).</li>
-            <li>Imersão Empreendedora: prática guiada para tirar ideias do papel.</li>
-            <li>Docentes qualificados e infraestrutura acadêmica do IFTO.</li>
-          </ul>
-        </div>
-        <aside class="card note" aria-label="Informações em destaque">
-          <h3>Em destaque</h3>
-          <p>Ambiente acolhedor com foco no desenvolvimento regional e integração com a comunidade.</p>
-        </aside>
-      </div>
-    </section>
-
-    <!-- O que você desenvolve -->
-    <section id="competencias" class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <span class="micro">Competências-chave</span>
-          <h2>O que você desenvolve</h2>
-        </div>
-        <div class="features">
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true"></div>
-            <h3>Gestão estratégica e operacional</h3>
-            <p>Planejar, executar e monitorar processos com visão sistêmica.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true"></div>
-            <h3>Análise e decisão</h3>
-            <p>Uso de métodos e dados para resolver desafios reais com eficiência.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true"></div>
-            <h3>Comunicação e liderança</h3>
-            <p>Habilidades interpessoais aplicadas em equipes e projetos.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true"></div>
-            <h3>Ética e resultados</h3>
-            <p>Postura responsável, cidadã e orientada a impacto positivo.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Vida no Campus -->
-    <section id="vida-campus" class="section">
-      <div class="container grid-two">
-        <div>
-          <h2>Vida no Campus Paraíso</h2>
-          <ul class="bullets">
-            <li>Ambiente acolhedor e focado no desenvolvimento regional.</li>
-            <li>Ações de extensão e eventos acadêmicos (ex.: SEMAD, Imersão Empreendedora).</li>
-            <li>Oportunidades de integração com a comunidade e projetos.</li>
-          </ul>
-        </div>
-        <aside class="card card-media">
-          <div class="media-placeholder" role="img" aria-label="Ambiente acadêmico do campus"></div>
-          <p class="media-caption">Imersões e projetos conectados à realidade local.</p>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Processo seletivo (linha do tempo) -->
-    <section id="processo" class="section alt">
-      <div class="container">
-        <h2>Como funciona o processo seletivo?</h2>
-        <ol class="timeline" aria-label="Etapas do processo seletivo">
-          <li class="timeline-item">
-            <div class="dot" aria-hidden="true"></div>
-            <p><strong>Inscrições encerradas</strong> no momento.</p>
-          </li>
-          <li class="timeline-item">
-            <div class="dot" aria-hidden="true"></div>
-            <p>Cadastre-se para receber o edital e prazos do <strong>Vestibular 2026</strong> assim que forem publicados.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Depoimentos (Prova social) -->
-    <section id="depoimentos" class="section">
-      <div class="container">
-        <div class="section-head">
-          <span class="micro">Prova social</span>
-          <h2>O que dizem nossos estudantes</h2>
-        </div>
-
-        <div class="testimonials">
-          <!-- Depoimento 1 -->
-          <figure class="testimonial">
-            <div class="avatar">
-              <img src="assets/img/depo1.jpg" alt="Foto da pessoa do depoimento 1" loading="lazy" decoding="async" />
+    <!-- Main Container -->
+    <div id="main-content" class="main-container">
+        
+        <!-- Hero Section com Vídeo -->
+        <section class="hero-section" id="hero">
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/videos/andando.mp4" type="video/mp4">
+                    <!-- Fallback para navegadores que não suportam vídeo -->
+                </video>
+                <div class="video-overlay"></div>
             </div>
-            <blockquote class="quote">
-              “O curso me ajudou a transformar ideias em projetos reais. A imersão empreendedora fez toda a diferença.”
-            </blockquote>
-            <figcaption class="author">
-              <span class="name">[Nome do(a) Estudante]</span>
-              <span class="role">Estudante de Administração</span>
-            </figcaption>
-          </figure>
-
-          <!-- Depoimento 2 -->
-          <figure class="testimonial">
-            <div class="avatar">
-              <img src="assets/img/depo2.jpg" alt="Foto da pessoa do depoimento 2" loading="lazy" decoding="async" />
+            
+            <div class="hero-content">
+                <h1 class="hero-title animate-fade-in">
+                    Parabéns por ter chegado até aqui.
+                </h1>
+                
+                <!-- Botão WhatsApp - Topo -->
+                <div class="cta-container animate-fade-in-delay">
+                    <button class="whatsapp-btn whatsapp-btn-hero" onclick="joinWhatsApp()">
+                        <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.63"/>
+                        </svg>
+                        Entrar na Comunidade
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </div>
             </div>
-            <blockquote class="quote">
-              “A prática e os projetos de extensão me deram segurança para atuar na região com impacto real.”
-            </blockquote>
-            <figcaption class="author">
-              <span class="name">[Nome do(a) Egresso(a)]</span>
-              <span class="role">Egresso(a)</span>
-            </figcaption>
-          </figure>
+        </section>
 
-          <!-- Depoimento 3 -->
-          <figure class="testimonial">
-            <div class="avatar">
-              <img src="assets/img/depo3.jpg" alt="Foto da pessoa do depoimento 3" loading="lazy" decoding="async" />
+        <!-- Content Sections -->
+        <main class="content-main">
+            
+            <!-- Seção 1: Continuar Avançando -->
+            <section class="content-section section-different">
+                <div class="container">
+                    <div class="section-content reverse-layout">
+                        <div class="text-content animate-slide-left">
+                            <p class="section-text">
+                                Mas é preciso continuar avançando se você quer crescer profissionalmente e melhorar sua condição financeira. Dê passos todos os dias, aos poucos, até encontrar sua vocação. Não é fácil, mas você consegue — e nós damos um empurrãozinho.
+                            </p>
+                        </div>
+                        <div class="image-content animate-slide-right">
+                            <div class="image-wrapper">
+                                <img src="assets/images/diferente.jpg" alt="Pessoas diferentes caminhando em direção ao sucesso" loading="lazy">
+                                <div class="image-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção 2: Desafio -->
+            <section class="content-section section-challenge">
+                <div class="container">
+                    <div class="section-content">
+                        <div class="image-content animate-slide-left">
+                            <div class="image-wrapper">
+                                <img src="assets/images/desafio.jpg" alt="Pessoa enfrentando desafios acadêmicos" loading="lazy">
+                                <div class="image-overlay"></div>
+                            </div>
+                        </div>
+                        <div class="text-content animate-slide-right">
+                            <p class="section-text">
+                                Decidir cursar uma graduação é um desafio. Se você gosta de se desafiar, está no lugar certo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção 3: Oportunidades com Background -->
+            <section class="content-section section-opportunities">
+                <div class="background-image">
+                    <img src="assets/images/job.jpg" alt="Oportunidades de trabalho em Paraíso" loading="lazy">
+                    <div class="background-overlay"></div>
+                </div>
+                <div class="container">
+                    <div class="centered-content">
+                        <div class="text-content animate-fade-in">
+                            <p class="section-text highlight-text">
+                                Aqui em Paraíso você percebe a quantidade de vagas que surgem diariamente. Confira no site do Surgiu, no SINE e nos grupos do WhatsApp e do Facebook; você verá muitas oportunidades.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção 4: Capacitação -->
+            <section class="content-section section-qualification">
+                <div class="container">
+                    <div class="section-content reverse-layout">
+                        <div class="text-content animate-slide-left">
+                            <p class="section-text">
+                                Elas são muitas, mas não são para todos. São para pessoas <strong>capacitadas</strong>.
+                            </p>
+                        </div>
+                        <div class="image-content animate-slide-right">
+                            <div class="image-wrapper">
+                                <img src="assets/images/call.jpg" alt="Profissional capacitado em ação" loading="lazy">
+                                <div class="image-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção 5: Business (Layout Especial) -->
+            <section class="content-section section-business">
+                <div class="container">
+                    <div class="business-layout animate-slide-up">
+                        <div class="business-image-frame">
+                            <img src="assets/images/business.jpg" alt="Mundo dos negócios e empreendedorismo" loading="lazy">
+                            <div class="business-overlay"></div>
+                        </div>
+                        <div class="business-text-overlay">
+                            <p class="section-text business-text">
+                                Até agora falei principalmente de CLT. Mas o Administrador de Empresas não vive só de CLT — vamos falar também de negócios.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção 6: Empreendedorismo -->
+            <section class="content-section section-entrepreneurship">
+                <div class="container">
+                    <div class="entrepreneurship-content animate-fade-in">
+                        <div class="text-content">
+                            <p class="section-text intro-text">
+                                Se você é criativo e sonha em empreender, começando Administração em 2026 você terá uma base acadêmica prática para aplicar na sua ideia de negócio:
+                            </p>
+                            
+                            <ul class="features-list">
+                                <li class="feature-item animate-slide-up">
+                                    <span class="feature-icon">🚀</span>
+                                    <span class="feature-text">Inovação e Mercado</span>
+                                </li>
+                                <li class="feature-item animate-slide-up">
+                                    <span class="feature-icon">💡</span>
+                                    <span class="feature-text">Desenvolvimento Pessoal</span>
+                                </li>
+                                <li class="feature-item animate-slide-up">
+                                    <span class="feature-icon">⚡</span>
+                                    <span class="feature-text">2 temporadas de Imersão Empreendedora</span>
+                                </li>
+                                <li class="feature-item animate-slide-up">
+                                    <span class="feature-icon">🏢</span>
+                                    <span class="feature-text">7 temporadas de Escritório Modelo (mão na massa)</span>
+                                </li>
+                                <li class="feature-item animate-slide-up">
+                                    <span class="feature-icon">🤝</span>
+                                    <span class="feature-text">Networking em eventos de tecnologia e inovação, como a Imersão Empreendedora e a Semana Acadêmica de Administração</span>
+                                </li>
+                            </ul>
+                            
+                            <p class="section-text map-intro">
+                                O mapa para começar está aqui: você receberá acesso à nossa comunidade no WhatsApp, onde divulgaremos todas as informações sobre a Imersão Empreendedora e a Semana Acadêmica.
+                            </p>
+                        </div>
+                        
+                        <div class="image-content">
+                            <div class="image-wrapper">
+                                <img src="assets/images/mapa.jpg" alt="Mapa da jornada empreendedora" loading="lazy">
+                                <div class="image-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção 7: Eventos -->
+            <section class="content-section section-events">
+                <div class="container">
+                    <div class="events-content animate-fade-in">
+                        <div class="event-card">
+                            <div class="event-header">
+                                <h3 class="event-title">Semana Acadêmica de Administração</h3>
+                                <span class="event-date">26 e 27 de Novembro</span>
+                            </div>
+                            <p class="event-description">
+                                Aberta ao público. Mais informações serão publicadas na comunidade — você precisa estar no grupo para não perder nada.
+                            </p>
+                        </div>
+                        
+                        <div class="event-card">
+                            <div class="event-header">
+                                <h3 class="event-title">Imersão Empreendedora</h3>
+                                <span class="event-date">28 a 30 de Novembro</span>
+                            </div>
+                            <p class="event-description">
+                                Novamente: esteja no grupo do WhatsApp para garantir sua inscrição.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Final: Call to Action -->
+            <section class="content-section section-final-cta">
+                <div class="container">
+                    <div class="final-content">
+                        <div class="text-content animate-slide-left">
+                            <p class="section-text final-text">
+                                Essa é a sua oportunidade de abrir a mente para o crescimento profissional. Se Administração é sua vocação, não sabemos, mas você vai descobrir — nem que seja aqui. Vejo você no grupo do WhatsApp.
+                            </p>
+                            
+                            <!-- Botão WhatsApp - Final -->
+                            <div class="cta-container">
+                                <button class="whatsapp-btn whatsapp-btn-final" onclick="joinWhatsApp()">
+                                    <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.63"/>
+                                    </svg>
+                                    Juntar-se Agora
+                                    <span class="btn-pulse"></span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="image-content animate-slide-right">
+                            <div class="image-wrapper">
+                                <img src="assets/images/mente.jpg" alt="Mente aberta para crescimento profissional" loading="lazy">
+                                <div class="image-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p class="footer-text">
+                    © 2024 Comunidade Administração Paraíso. Sua jornada profissional começa aqui.
+                </p>
             </div>
-            <blockquote class="quote">
-              “Docentes próximos e infraestrutura de qualidade. Foi essencial para meu desenvolvimento.”
-            </blockquote>
-            <figcaption class="author">
-              <span class="name">[Nome do(a) Estudante]</span>
-              <span class="role">Bolsista de Extensão</span>
-            </figcaption>
-          </figure>
+        </footer>
+
+        <!-- Floating WhatsApp Button -->
+        <div class="floating-whatsapp" onclick="joinWhatsApp()">
+            <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.30"/>
+            </svg>
         </div>
-      </div>
-    </section>
-
-    <!-- Formulário -->
-    <section id="inscricao" class="section emphasis" aria-labelledby="titulo-form">
-  <div class="container narrow">
-    <h2 id="titulo-form">Cadastre-se para receber novidades do Vestibular 2026</h2>
-
-    <form id="lead-form" novalidate>
-      <!-- Honeypot anti-spam (oculto) -->
-      <div class="hp-field" aria-hidden="true">
-        <label for="website">Não preencha este campo</label>
-        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
-      </div>
-
-      <div class="form-grid">
-        <div class="form-control">
-          <label for="nome">Nome completo</label>
-          <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Digite seu nome completo" />
-          <small class="error" id="erro-nome" role="alert" aria-live="polite"></small>
-        </div>
-
-        <div class="form-control">
-          <label for="email">E-mail</label>
-          <input type="email" id="email" name="email" required autocomplete="email" placeholder="seuemail@exemplo.com" />
-          <small class="error" id="erro-email" role="alert" aria-live="polite"></small>
-        </div>
-      </div>
-
-      <label class="check required">
-        <input type="checkbox" id="lgpd" name="lgpd" required />
-        <span>Autorizo o uso dos meus dados para contato sobre o curso e processos seletivos do IFTO.</span>
-      </label>
-      <small class="error" id="erro-lgpd" role="alert" aria-live="polite"></small>
-
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary" aria-label="Enviar cadastro" data-track="cta_form_submit">Quero receber novidades do Vestibular 2026</button>
-        <p class="form-feedback" id="form-feedback" role="status" aria-live="polite" hidden></p>
-      </div>
-    </form>
-
-    <p class="form-footnote">
-      Ao enviar, você receberá um e-mail de boas-vindas e uma sequência com:
-      "Conheça o curso", "Vida no campus" e "Próximos passos".
-    </p>
-  </div>
-</section>
-
-    <!-- FAQ -->
-    <section id="faq" class="section">
-      <div class="container">
-        <h2>Perguntas frequentes (FAQ)</h2>
-
-        <details class="faq-item">
-          <summary><span class="faq-title">O curso é presencial?</span></summary>
-          <div class="faq-body">
-            <p>Sim, com parte da carga em ambiente virtual.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary><span class="faq-title">Quanto tempo dura?</span></summary>
-          <div class="faq-body">
-            <p>Mínimo 8 semestres e máximo 16.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary><span class="faq-title">Tem estágio e TCC?</span></summary>
-          <div class="faq-body">
-            <p>Sim, ambos obrigatórios.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary><span class="faq-title">Quais são as vagas?</span></summary>
-          <div class="faq-body">
-            <p>Previsão de 40 vagas para 2026 (sujeito a editais).</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary><span class="faq-title">Quando abrem as inscrições?</span></summary>
-          <div class="faq-body">
-            <p>Divulgaremos por e-mail e redes assim que sair o edital.</p>
-          </div>
-        </details>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-grid">
-      <div>
-        <!-- LOGO Black no rodapé, em badge branco para contraste -->
-        <div class="footer-logo-wrap" aria-label="Logo Impacto Adm">
-          <img src="assets/img/Black.png" alt="Impacto Adm" class="footer-logo" width="140" decoding="async" loading="lazy" />
-        </div>
-
-        <h3>Administração — IFTO (Campus Paraíso do Tocantins)</h3>
-        <p>Formação presencial com projetos, extensão, estágio e TCC.</p>
-      </div>
-      <div>
-        <h3>Conformidade</h3>
-        <ul class="footer-links">
-          <li><span>Política de privacidade</span></li>
-          <li><span>Canais oficiais do campus</span></li>
-          <li><span>Meios de contato</span></li>
-        </ul>
-      </div>
     </div>
-    <div class="container footer-base">
-      <p>© <span id="ano-atual"></span> IFTO — Campus Paraíso do Tocantins</p>
-      <p class="credit">
-        Site desenvolvido com
-        <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M12 21s-6.716-4.252-9.2-7.4C.97 10.594 2.02 7.5 4.7 6.4c1.87-.79 4.07-.21 5.3 1.2 1.23-1.41 3.43-1.99 5.3-1.2 2.68 1.1 3.73 4.194 1.9 7.2C18.716 16.748 12 21 12 21z"
-                fill="none" stroke="#DC2626" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-        por <strong>Impacto Adm</strong>
-      </p>
-    </div>
-  </footer>
 
-  <!-- JS principal (com versão para evitar cache) -->
-  <script src="script.js"></script>
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
 </body>
 </html>
