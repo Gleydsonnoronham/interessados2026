@@ -3,284 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunidade Administração - Paraíso</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Junte-se à nossa comunidade de Administração e descubra oportunidades de crescimento profissional em Paraíso.">
-    <meta name="keywords" content="administração, empreendedorismo, paraíso, whatsapp, comunidade">
-    
-    <!-- Open Graph para compartilhamento -->
-    <meta property="og:title" content="Comunidade Administração - Paraíso">
-    <meta property="og:description" content="Sua jornada profissional começa aqui. Entre no grupo!">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Landing page do curso de Administração em Paraíso-TO. Descubra seu futuro profissional e junte-se à nossa comunidade.">
+    <meta name="keywords" content="Administração, Paraíso-TO, faculdade, curso superior, empreendedorismo, mercado de trabalho, ensino superior, vestibular">
+    <meta name="author" content="Administração Paraíso-TO">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta property="og:url" content="https://seusite.github.io/landing-page-adm/">
+    <meta property="og:title" content="Administração em Paraíso-TO: Seu Futuro Começa Aqui">
+    <meta property="og:description" content="Prepare-se para o mercado de trabalho em Paraíso-TO. Descubra o curso de Administração e transforme sua carreira.">
+    <meta property="og:image" content="https://seusite.github.io/landing-page-adm/assets/images/business.jpg"> <!-- Placeholder image for social sharing -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://seusite.github.io/landing-page-adm/">
+    <meta property="twitter:title" content="Administração em Paraíso-TO: Seu Futuro Começa Aqui">
+    <meta property="twitter:description" content="Prepare-se para o mercado de trabalho em Paraíso-TO. Descubra o curso de Administração e transforme sua carreira.">
+    <meta property="twitter:image" content="https://seusite.github.io/landing-page-adm/assets/images/business.jpg"> <!-- Placeholder image for social sharing -->
+
+    <title>Administração Paraíso-TO | Seu Futuro Profissional</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "name": "Administração Paraíso-TO | Seu Futuro Profissional",
+      "description": "Landing page do curso de Administração em Paraíso-TO. Descubra seu futuro profissional e junte-se à nossa comunidade.",
+      "url": "https://seusite.github.io/landing-page-adm/",
+      "potentialAction": {
+        "@type": "JoinAction",
+        "name": "Inscreva-se",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://wa.me/SEU_NUMERO_AQUI?text=Ol%C3%A1!%20Tenho%20interesse%20no%20curso%20de%20Administra%C3%A7%C3%A3o%20em%20Para%C3%ADso-TO."
+        }
+      }
+    }
+    </script>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="loading-spinner"></div>
-        <p>Carregando sua jornada...</p>
-    </div>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-    <!-- Main Container -->
-    <div id="main-content" class="main-container">
-        
-        <!-- Hero Section com Vídeo -->
-        <section class="hero-section" id="hero">
+    <header class="header">
+        <div class="container">
+            <nav class="main-nav" aria-label="Navegação Principal">
+                <a href="#hero" class="logo" aria-label="Página Inicial">Administração Paraíso-TO</a>
+                <!-- Optional: Add menu items here if needed later -->
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- SEÇÃO 1: HERO -->
+        <section id="hero" class="hero-section">
             <div class="video-background">
-                <video autoplay muted loop playsinline>
+                <video autoplay muted loop playsinline poster="assets/images/andando-poster.jpg" aria-label="Pessoas andando e trabalhando em um escritório, representando o dinamismo da administração.">
                     <source src="assets/videos/andando.mp4" type="video/mp4">
-                    <!-- Fallback para navegadores que não suportam vídeo -->
+                    Seu navegador não suporta o elemento de vídeo.
                 </video>
-                <div class="video-overlay"></div>
+                <div class="video-overlay" aria-hidden="true"></div>
             </div>
-            
-            <div class="hero-content">
-                <h1 class="hero-title animate-fade-in">
-                    Parabéns por ter chegado até aqui.
-                </h1>
-                
-                <!-- Botão WhatsApp - Topo -->
-                <div class="cta-container animate-fade-in-delay">
-                    <button class="whatsapp-btn whatsapp-btn-hero" onclick="joinWhatsApp()">
-                        <svg class="whatsapp-icon" viewBox="0 0 24 24">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.63"/>
-                        </svg>
-                        Entrar na Comunidade
-                        <span class="btn-arrow">→</span>
-                    </button>
+            <div class="hero-content container">
+                <h1 class="hero-headline">Você sentiu, né?</h1>
+                <p class="hero-subheadline">Aquela inquietação, a vontade de fazer a diferença, de construir algo sólido.</p>
+                <p class="hero-text">Você acredita que o caminho da Administração pode te levar a lugares extraordinários.</p>
+                <a href="https://wa.me/SEU_NUMERO_AQUI?text=Ol%C3%A1!%20Tenho%20interesse%20no%20curso%20de%20Administra%C3%A7%C3%A3o%20em%20Para%C3%ADso-TO." class="btn btn-primary cta-button" data-cta="hero-main" target="_blank" rel="noopener noreferrer">
+                    Quero sentir essa transformação!
+                </a>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: CONTEXTO LOCAL -->
+        <section id="contexto" class="section contexto-section">
+            <div class="container content-grid">
+                <div class="grid-item image-left">
+                    <img src="assets/images/diferente.jpg" alt="Pessoa pensativa olhando para o horizonte, simbolizando novas perspectivas." loading="lazy">
+                </div>
+                <div class="grid-item text-right">
+                    <h2 class="section-headline">Viver em Paraíso-TO é bom, mas o que você quer construir aqui?</h2>
+                    <p>Paraíso do Tocantins é uma cidade de oportunidades, com um crescimento constante que demanda profissionais qualificados e com visão de futuro. Você está preparado(a) para aproveitar o que o mercado local tem a oferecer e, mais importante, para criar suas próprias oportunidades?</p>
                 </div>
             </div>
         </section>
 
-        <!-- Content Sections -->
-        <main class="content-main">
-            
-            <!-- Seção 1: Continuar Avançando -->
-            <section class="content-section section-different">
-                <div class="container">
-                    <div class="section-content reverse-layout">
-                        <div class="text-content animate-slide-left">
-                            <p class="section-text">
-                                Mas é preciso continuar avançando se você quer crescer profissionalmente e melhorar sua condição financeira. Dê passos todos os dias, aos poucos, até encontrar sua vocação. Não é fácil, mas você consegue — e nós damos um empurrãozinho.
-                            </p>
-                        </div>
-                        <div class="image-content animate-slide-right">
-                            <div class="image-wrapper">
-                                <img src="assets/images/diferente.jpg" alt="Pessoas diferentes caminhando em direção ao sucesso" loading="lazy">
-                                <div class="image-overlay"></div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- SEÇÃO 3: TRANSIÇÃO -->
+        <section id="transicao" class="section transicao-section bg-secondary">
+            <div class="container content-grid reverse-on-mobile">
+                <div class="grid-item text-left">
+                    <h2 class="section-headline">Escolher uma faculdade é difícil. Abrir mão de um sonho é pior.</h2>
+                    <p>Sabemos que a decisão de qual curso seguir é um divisor de águas. É sobre abraçar um futuro, não apenas escolher uma profissão. A verdadeira transformação exige coragem para dar o primeiro passo e o suporte certo para seguir em frente.</p>
                 </div>
-            </section>
-
-            <!-- Seção 2: Desafio -->
-            <section class="content-section section-challenge">
-                <div class="container">
-                    <div class="section-content">
-                        <div class="image-content animate-slide-left">
-                            <div class="image-wrapper">
-                                <img src="assets/images/desafio.jpg" alt="Pessoa enfrentando desafios acadêmicos" loading="lazy">
-                                <div class="image-overlay"></div>
-                            </div>
-                        </div>
-                        <div class="text-content animate-slide-right">
-                            <p class="section-text">
-                                Decidir cursar uma graduação é um desafio. Se você gosta de se desafiar, está no lugar certo.
-                            </p>
-                        </div>
-                    </div>
+                <div class="grid-item image-right">
+                    <img src="assets/images/desafio.jpg" alt="Pessoa atravessando uma ponte em meio à neblina, representando o desafio de uma nova escolha." loading="lazy">
                 </div>
-            </section>
-
-            <!-- Seção 3: Oportunidades com Background -->
-            <section class="content-section section-opportunities">
-                <div class="background-image">
-                    <img src="assets/images/job.jpg" alt="Oportunidades de trabalho em Paraíso" loading="lazy">
-                    <div class="background-overlay"></div>
-                </div>
-                <div class="container">
-                    <div class="centered-content">
-                        <div class="text-content animate-fade-in">
-                            <p class="section-text highlight-text">
-                                Aqui em Paraíso você percebe a quantidade de vagas que surgem diariamente. Confira no site do Surgiu, no SINE e nos grupos do WhatsApp e do Facebook; você verá muitas oportunidades.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Seção 4: Capacitação -->
-            <section class="content-section section-qualification">
-                <div class="container">
-                    <div class="section-content reverse-layout">
-                        <div class="text-content animate-slide-left">
-                            <p class="section-text">
-                                Elas são muitas, mas não são para todos. São para pessoas <strong>capacitadas</strong>.
-                            </p>
-                        </div>
-                        <div class="image-content animate-slide-right">
-                            <div class="image-wrapper">
-                                <img src="assets/images/call.jpg" alt="Profissional capacitado em ação" loading="lazy">
-                                <div class="image-overlay"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Seção 5: Business (Layout Especial) -->
-            <section class="content-section section-business">
-                <div class="container">
-                    <div class="business-layout animate-slide-up">
-                        <div class="business-image-frame">
-                            <img src="assets/images/business.jpg" alt="Mundo dos negócios e empreendedorismo" loading="lazy">
-                            <div class="business-overlay"></div>
-                        </div>
-                        <div class="business-text-overlay">
-                            <p class="section-text business-text">
-                                Até agora falei principalmente de CLT. Mas o Administrador de Empresas não vive só de CLT — vamos falar também de negócios.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Seção 6: Empreendedorismo -->
-            <section class="content-section section-entrepreneurship">
-                <div class="container">
-                    <div class="entrepreneurship-content animate-fade-in">
-                        <div class="text-content">
-                            <p class="section-text intro-text">
-                                Se você é criativo e sonha em empreender, começando Administração em 2026 você terá uma base acadêmica prática para aplicar na sua ideia de negócio:
-                            </p>
-                            
-                            <ul class="features-list">
-                                <li class="feature-item animate-slide-up">
-                                    <span class="feature-icon">🚀</span>
-                                    <span class="feature-text">Inovação e Mercado</span>
-                                </li>
-                                <li class="feature-item animate-slide-up">
-                                    <span class="feature-icon">💡</span>
-                                    <span class="feature-text">Desenvolvimento Pessoal</span>
-                                </li>
-                                <li class="feature-item animate-slide-up">
-                                    <span class="feature-icon">⚡</span>
-                                    <span class="feature-text">2 temporadas de Imersão Empreendedora</span>
-                                </li>
-                                <li class="feature-item animate-slide-up">
-                                    <span class="feature-icon">🏢</span>
-                                    <span class="feature-text">7 temporadas de Escritório Modelo (mão na massa)</span>
-                                </li>
-                                <li class="feature-item animate-slide-up">
-                                    <span class="feature-icon">🤝</span>
-                                    <span class="feature-text">Networking em eventos de tecnologia e inovação, como a Imersão Empreendedora e a Semana Acadêmica de Administração</span>
-                                </li>
-                            </ul>
-                            
-                            <p class="section-text map-intro">
-                                O mapa para começar está aqui: você receberá acesso à nossa comunidade no WhatsApp, onde divulgaremos todas as informações sobre a Imersão Empreendedora e a Semana Acadêmica.
-                            </p>
-                        </div>
-                        
-                        <div class="image-content">
-                            <div class="image-wrapper">
-                                <img src="assets/images/mapa.jpg" alt="Mapa da jornada empreendedora" loading="lazy">
-                                <div class="image-overlay"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Seção 7: Eventos -->
-            <section class="content-section section-events">
-                <div class="container">
-                    <div class="events-content animate-fade-in">
-                        <div class="event-card">
-                            <div class="event-header">
-                                <h3 class="event-title">Semana Acadêmica de Administração</h3>
-                                <span class="event-date">26 e 27 de Novembro</span>
-                            </div>
-                            <p class="event-description">
-                                Aberta ao público. Mais informações serão publicadas na comunidade — você precisa estar no grupo para não perder nada.
-                            </p>
-                        </div>
-                        
-                        <div class="event-card">
-                            <div class="event-header">
-                                <h3 class="event-title">Imersão Empreendedora</h3>
-                                <span class="event-date">28 a 30 de Novembro</span>
-                            </div>
-                            <p class="event-description">
-                                Novamente: esteja no grupo do WhatsApp para garantir sua inscrição.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Seção Final: Call to Action -->
-            <section class="content-section section-final-cta">
-                <div class="container">
-                    <div class="final-content">
-                        <div class="text-content animate-slide-left">
-                            <p class="section-text final-text">
-                                Essa é a sua oportunidade de abrir a mente para o crescimento profissional. Se Administração é sua vocação, não sabemos, mas você vai descobrir — nem que seja aqui. Vejo você no grupo do WhatsApp.
-                            </p>
-                            
-                            <!-- Botão WhatsApp - Final -->
-                            <div class="cta-container">
-                                <button class="whatsapp-btn whatsapp-btn-final" onclick="joinWhatsApp()">
-                                    <svg class="whatsapp-icon" viewBox="0 0 24 24">
-                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.63"/>
-                                    </svg>
-                                    Juntar-se Agora
-                                    <span class="btn-pulse"></span>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="image-content animate-slide-right">
-                            <div class="image-wrapper">
-                                <img src="assets/images/mente.jpg" alt="Mente aberta para crescimento profissional" loading="lazy">
-                                <div class="image-overlay"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <p class="footer-text">
-                    © 2024 Comunidade Administração Paraíso. Sua jornada profissional começa aqui.
-                </p>
             </div>
-        </footer>
+        </section>
 
-        <!-- Floating WhatsApp Button -->
-        <div class="floating-whatsapp" onclick="joinWhatsApp()">
-            <svg class="whatsapp-icon" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.30"/>
-            </svg>
+        <!-- SEÇÃO 4: BIFURCAÇÃO -->
+        <section id="bifurcacao" class="section bifurcacao-section">
+            <div class="background-image-overlay" style="background-image: url('assets/images/job.jpg');" aria-hidden="true"></div>
+            <div class="section-overlay" aria-hidden="true"></div>
+            <div class="container text-center content-on-overlay">
+                <h2 class="section-headline white-text">Dois caminhos. Mesma base.</h2>
+                <p class="white-text">A administração te prepara para qualquer um deles. Qual você escolhe?</p>
+                <div class="cards-grid">
+                    <article class="card path-card">
+                        <img src="assets/images/call.jpg" alt="Profissional em ambiente corporativo ao telefone, símbolo de carreira CLT." loading="lazy">
+                        <h3 class="card-title">Profissional CLT</h3>
+                        <p>Subir na carreira, gerenciar equipes, otimizar processos em grandes empresas ou em negócios locais, contribuindo com sua expertise e alcançando reconhecimento profissional.</p>
+                    </article>
+                    <article class="card path-card">
+                        <img src="assets/images/business.jpg" alt="Pessoa sorrindo e apresentando um tablet, simbolizando o empreendedorismo e inovação." loading="lazy">
+                        <h3 class="card-title">Empreendedor</h3>
+                        <p>Criar seu próprio negócio, inovar, gerar empregos, impactar a economia local e ser o protagonista da sua história, com autonomia e paixão.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: DIFERENCIAIS -->
+        <section id="diferenciais" class="section diferenciais-section bg-secondary">
+            <div class="container text-center">
+                <h2 class="section-headline">Nossos Diferenciais para 2026</h2>
+                <p>O curso de Administração em Paraíso-TO é pensado para você que busca excelência e relevância no mercado.</p>
+                <ul class="differentiators-list">
+                    <li><span class="icon">✔️</span> Grade curricular atualizada com foco em inovação e gestão sustentável.</li>
+                    <li><span class="icon">✔️</span> Corpo docente experiente, com atuação relevante no mercado e na academia.</li>
+                    <li><span class="icon">✔️</span> Projetos integradores que simulam desafios reais de empresas.</li>
+                    <li><span class="icon">✔️</span> Convênios com empresas locais para estágios e networking.</li>
+                    <li><span class="icon">✔️</span> Laboratórios equipados para a prática da gestão e análise de dados.</li>
+                    <li><span class="icon">✔️</span> Flexibilidade de horários e modalidades para se adequar à sua rotina.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: O MOMENTO -->
+        <section id="momento" class="section momento-section">
+            <div class="container content-grid">
+                <div class="grid-item image-left">
+                    <img src="assets/images/mapa.jpg" alt="Mapa com pinos de localização, simbolizando o planejamento e o futuro." loading="lazy">
+                </div>
+                <div class="grid-item text-right">
+                    <h2 class="section-headline">O seu momento de começar é AGORA!</h2>
+                    <p>Não espere o futuro para começar a construí-lo. Participe dos nossos eventos e sinta de perto a energia que te espera:</p>
+                    <ul class="event-list">
+                        <li>
+                            <strong>Imersão Empreendedora:</strong>
+                            <p>Data: 28 a 30 de Novembro</p>
+                            <p>Uma experiência prática para desenvolver suas habilidades empreendedoras. Vagas limitadas!</p>
+                        </li>
+                        <li>
+                            <strong>Semana Acadêmica de Administração:</strong>
+                            <p>Data: 26 e 27 de Novembro</p>
+                            <p>Palestras, workshops e debates com grandes nomes da Administração. Conhecimento e networking garantidos.</p>
+                        </li>
+                    </ul>
+                    <p class="warning">Atenção: Os eventos têm vagas limitadas. Garanta sua participação e não fique de fora!</p>
+                    <a href="https://wa.me/SEU_NUMERO_AQUI?text=Ol%C3%A1!%20Tenho%20interesse%20nos%20eventos%20de%20Administra%C3%A7%C3%A3o%20em%20Para%C3%ADso-TO." class="btn btn-primary cta-button" data-cta="momento-events" target="_blank" rel="noopener noreferrer">
+                        Quero participar dos eventos!
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 7: COMUNIDADE -->
+        <section id="comunidade" class="section comunidade-section bg-accent-light">
+            <div class="container content-grid reverse-on-mobile">
+                <div class="grid-item text-left">
+                    <h2 class="section-headline">Descubra sua vocação, mas não sozinho(a).</h2>
+                    <p>Junte-se à nossa Comunidade ADM Paraíso no WhatsApp e esteja sempre à frente:</p>
+                    <ul class="benefits-list">
+                        <li><span class="icon">💬</span> Notícias exclusivas sobre o curso e o mercado.</li>
+                        <li><span class="icon">📅</span> Calendário de eventos e workshops gratuitos.</li>
+                        <li><span class="icon">💡</span> Conteúdo inspirador sobre carreira e empreendedorismo.</li>
+                        <li><span class="icon">🤝</span> Networking com futuros colegas e professores.</li>
+                        <li><span class="icon">🎁</span> Acesso antecipado a bônus e oportunidades especiais.</li>
+                    </ul>
+                </div>
+                <div class="grid-item image-right">
+                    <img src="assets/images/mente.jpg" alt="Grupo de pessoas colaborando e compartilhando ideias, representando uma comunidade unida." loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 8: CTA FINAL -->
+        <section id="cta-final" class="section cta-final-section bg-primary-dark text-center">
+            <div class="container">
+                <h2 class="cta-headline white-text">A pergunta não é "Administração é boa o suficiente?".</h2>
+                <h2 class="cta-headline white-text">A pergunta é: Você é bom o suficiente para a Administração?</h2>
+                <p class="cta-subtext white-text">Dê o primeiro passo para uma carreira de sucesso e impacto em Paraíso-TO.</p>
+                <a href="https://wa.me/SEU_NUMERO_AQUI?text=Ol%C3%A1!%20Tenho%20interesse%20no%20curso%20de%20Administra%C3%A7%C3%A3o%20em%20Para%C3%ADso-TO." class="btn btn-primary btn-large cta-button" data-cta="final-main" target="_blank" rel="noopener noreferrer">
+                    SIM! Quero me conectar com a Administração!
+                </a>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 9: PÓS-CTA -->
+        <section id="pos-cta" class="section pos-cta-section bg-light text-center">
+            <div class="container">
+                <p class="validation-text">Sua jornada de sucesso começa com uma decisão. Não deixe o medo te parar.</p>
+                <a href="https://wa.me/SEU_NUMERO_AQUI?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20processo%20seletivo%20para%20Administra%C3%A7%C3%A3o%20em%20Para%C3%ADso-TO." class="btn btn-secondary cta-button" data-cta="pos-cta-secondary" target="_blank" rel="noopener noreferrer">
+                    Fale com nosso consultor agora
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Administração Paraíso-TO. Todos os direitos reservados.</p>
+            <p>Curso de Bacharelado em Administração. Mais informações, entre em contato.</p>
+            <nav class="footer-nav" aria-label="Navegação de Rodapé">
+                <a href="#hero">Início</a>
+                <a href="#contexto">Sobre</a>
+                <a href="#momento">Eventos</a>
+                <a href="privacy-policy.html">Política de Privacidade</a> <!-- Placeholder -->
+            </nav>
         </div>
-    </div>
+    </footer>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
